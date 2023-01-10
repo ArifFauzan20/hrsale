@@ -75,7 +75,7 @@ $get_animate = '';
 	  'nodeTitle': 'name',
       'nodeContent': 'title',
       'pan': true,
-	  'visibleLevel': 3,
+	  'visibleLevel': 6,
 	  'exportButton': true,
 	  'exportFilename': '<?= $user_chart['company_name'];?>_<?=lang('Dashboard.xin_org_chart_title');?>',
       'zoom': true,

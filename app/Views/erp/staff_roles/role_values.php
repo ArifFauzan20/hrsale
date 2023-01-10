@@ -378,6 +378,12 @@ $user_info = $UsersModel->where('user_id', $usession['sup_user_id'])->first();
 	{ id: "", class: "role-checkbox custom-control-input input-light-primary", text: "<?= lang('Main.xin_edit');?>", value: "designation3",},
 	{ id: "", class: "role-checkbox custom-control-input input-light-primary", text: "<?= lang('Main.xin_delete');?>", value: "designation4",},
 	]},
+	{ id: "", class: "role-checkbox custom-control-input input-light-primary", text: "<?= lang('Dashboard.left_sergeant');?>", value: "sergeant1",items: [
+	{ id: "", class: "role-checkbox custom-control-input input-light-primary", text: "<?= lang('Main.xin_role_enable');?>", value: "sergeant1",},
+	{ id: "", class: "role-checkbox custom-control-input input-light-primary", text: "<?= lang('Main.xin_add');?>", value: "sergeant2",},
+	{ id: "", class: "role-checkbox custom-control-input input-light-primary", text: "<?= lang('Main.xin_edit');?>", value: "sergeant3",},
+	{ id: "", class: "role-checkbox custom-control-input input-light-primary", text: "<?= lang('Main.xin_delete');?>", value: "sergeant4",},
+	]},
 	{ id: "", class: "role-checkbox custom-control-input input-light-primary", text: "<?= lang('Dashboard.header_policies');?>", value: "policy1",items: [
 	{ id: "", class: "role-checkbox custom-control-input input-light-primary", text: "<?= lang('Main.xin_role_enable');?>", value: "policy1",},
 	{ id: "", class: "role-checkbox custom-control-input input-light-primary", text: "<?= lang('Main.xin_add');?>", value: "policy2",},

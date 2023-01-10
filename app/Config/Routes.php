@@ -122,6 +122,8 @@ $routes->get('erp/corehr-dashboard/', 'Department::corehr_dashboard', ['namespac
 $routes->get('erp/departments-list/', 'Department::index', ['namespace' => 'App\Controllers\Erp','filter' => 'checklogin']);
 // designation
 $routes->get('erp/designation-list/', 'Designation::index', ['namespace' => 'App\Controllers\Erp','filter' => 'checklogin']);
+// sergeant
+$routes->get('erp/sergeant-list/', 'Sergeant::index', ['namespace' => 'App\Controllers\Erp','filter' => 'checklogin']);
 // announcements
 $routes->get('erp/news-list/', 'Announcements::index', ['namespace' => 'App\Controllers\Erp','filter' => 'checklogin']);
 $routes->get('erp/announcement-view/(:segment)', 'Announcements::announcement_view', ['namespace' => 'App\Controllers\Erp','filter' => 'checklogin']);

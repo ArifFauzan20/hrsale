@@ -99,21 +99,41 @@ $company_types = $ConstantsModel->where('type','company_type')->orderBy('constan
                   <?= lang('Dashboard.dashboard_profile_complete');?>
                 </h6>
                 </a>
-                <div class="dropdown-menu dropdown-menu-center"> <a href="<?= site_url('erp/departments-list')?>" class="dropdown-item"> <i data-feather="align-justify"></i> <span>
+                <div class="dropdown-menu dropdown-menu-center"> 
+                  <a href="<?= site_url('erp/departments-list')?>" class="dropdown-item"> <i data-feather="align-justify"></i> 
+                  <span>
                   <?= lang('Dashboard.left_department');?>
-                  <i data-feather="check-circle" <?php if($profile_completeness['departments']==1):?>class="text-success"<?php endif;?>></i></span> </a> <a href="<?= site_url('erp/designation-list')?>" class="dropdown-item"> <i data-feather="list"></i> <span>
-                  <?= lang('Dashboard.left_designation');?>
-                  <i data-feather="check-circle" <?php if($profile_completeness['designations']==1):?>class="text-success"<?php endif;?>></i></span> </a> <a href="<?= site_url('erp/set-roles')?>" class="dropdown-item"> <i data-feather="unlock"></i> <span>
+                  <i data-feather="check-circle" <?php if($profile_completeness['departments']==1):?>class="text-success"<?php endif;?>></i></span> 
+                  </a> 
+                  <a href="<?= site_url('erp/designation-list')?>" class="dropdown-item"> <i data-feather="list"></i> 
+                  <span>
+                  <?= lang('Designation');?>
+                  <i data-feather="check-circle" <?php if($profile_completeness['designations']==1):?>class="text-success"<?php endif;?>></i>
+                  </span> 
+                  </a> 
+                  <a href="<?= site_url('erp/sergeant-list')?>" class="dropdown-item"> <i data-feather="list"></i> 
+                  <span>
+                  <?= lang('Dashboard.left_sergeant');?>
+                  <i data-feather="check-circle" <?php if($profile_completeness['sergeants']==1):?>class="text-success"<?php endif;?>></i>
+                  </span> 
+                  </a> 
+                  <a href="<?= site_url('erp/set-roles')?>" class="dropdown-item"> <i data-feather="unlock"></i> <span>
                   <?= lang('Dashboard.left_set_roles');?>
-                  <i data-feather="check-circle" <?php if($profile_completeness['roles']==1):?>class="text-success"<?php endif;?>></i></span> </a> <a href="<?= site_url('erp/office-shifts')?>" class="dropdown-item"> <i data-feather="clock"></i> <span>
+                  <i data-feather="check-circle" <?php if($profile_completeness['roles']==1):?>class="text-success"<?php endif;?>></i></span> 
+                  </a> 
+                  <a href="<?= site_url('erp/office-shifts')?>" class="dropdown-item"> <i data-feather="clock"></i> <span>
                   <?= lang('Employees.xin_employee_office_shifts');?>
-                  <i data-feather="check-circle" <?php if($profile_completeness['office_shifts']==1):?>class="text-success"<?php endif;?>></i></span> </a> <a href="<?= site_url('erp/competencies')?>" class="dropdown-item"> <i data-feather="list"></i> <span>
+                  <i data-feather="check-circle" <?php if($profile_completeness['office_shifts']==1):?>class="text-success"<?php endif;?>></i></span> 
+                  </a> 
+                  <a href="<?= site_url('erp/competencies')?>" class="dropdown-item"> <i data-feather="list"></i> <span>
                   <?= lang('Performance.xin_competencies');?>
-                  <i data-feather="check-circle" <?php if($profile_completeness['competencies'] == 1):?>class="text-success"<?php endif;?>></i></span> </a>
+                  <i data-feather="check-circle" <?php if($profile_completeness['competencies'] == 1):?>class="text-success"<?php endif;?>></i></span> 
+                  </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" target="_blank" href="<?= site_url('contact')?>"><i data-feather="help-circle"></i>
                   <?= lang('Membership.xin_need_more_help');?>
-                  </a> </div>
+                  </a> 
+                </div>
               </div>
               <div class="col">
                 <div class="progress" style="height:8px">

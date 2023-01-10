@@ -44,6 +44,7 @@ return [
 	'ci_designation_added_msg' => 'Penunjukan ditambahkan.',
 	'ci_designation_updated_msg' => 'Penunjukan diperbarui.',
 	'ci_designation_deleted_msg' => 'Penunjukan dihapus.',
+	'ci_sergeant_deleted_msg' => 'Sergeant dihapus.',
 	'ci_policy_added_msg' => 'Kebijakan ditambahkan.',
 	'ci_policy_updated_msg' => 'Kebijakan diperbarui.',
 	'ci_policy_deleted_msg' => 'Kebijakan dihapus.',

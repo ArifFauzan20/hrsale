@@ -55,6 +55,9 @@ $setup_modules = unserialize($xin_com_system['setup_modules']);
       <li class="pc-item <?php if(!empty($arr_mod['designation_active']))echo $arr_mod['designation_active'];?>"> <a class="pc-link" href="<?= site_url('erp/designation-list');?>" >
         <?= lang('Dashboard.left_designation');?>
         </a> </li>
+      <li class="pc-item <?php if(!empty($arr_mod['sergeant_active']))echo $arr_mod['sergeant_active'];?>"> <a class="pc-link" href="<?= site_url('erp/sergeant-list');?>" >
+        <?= lang('Dashboard.left_sergeant');?>
+        </a> </li>
       <li class="pc-item <?php if(!empty($arr_mod['policies_active']))echo $arr_mod['policies_active'];?>"> <a class="pc-link" href="<?= site_url('erp/policies-list');?>" >
         <?= lang('Dashboard.header_policies');?>
         </a> </li>
@@ -69,7 +72,7 @@ $setup_modules = unserialize($xin_com_system['setup_modules']);
     </ul>
   </li>
   <!-- Attendance -->
-  <li class="pc-item pc-hasmenu <?php if(!empty($arr_mod['attendance_open']))echo $arr_mod['attendance_open'];?>"> <a href="#" class="pc-link sidenav-toggle"><span class="pc-micon"><i data-feather="clock"></i></span><span class="pc-mtext">
+  <!-- <li class="pc-item pc-hasmenu <?php if(!empty($arr_mod['attendance_open']))echo $arr_mod['attendance_open'];?>"> <a href="#" class="pc-link sidenav-toggle"><span class="pc-micon"><i data-feather="clock"></i></span><span class="pc-mtext">
     <?= lang('Dashboard.left_attendance');?>
     </span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
     <ul class="pc-submenu" <?php if(!empty($arr_mod['attendance_style_ul']))echo $arr_mod['attendance_style_ul'];?>>
@@ -86,7 +89,7 @@ $setup_modules = unserialize($xin_com_system['setup_modules']);
         <?= lang('Dashboard.xin_overtime_request');?>
         </a> </li>
     </ul>
-  </li>
+  </li> -->
   <!-- Finance -->
   
   <!-- Payroll -->
@@ -94,13 +97,13 @@ $setup_modules = unserialize($xin_com_system['setup_modules']);
   <!-- Projects -->
 
   <!-- Clients -->
-  <li class="pc-item"><a href="<?= site_url('erp/clients-list');?>" class="pc-link "><span class="pc-micon"><i data-feather="user-check"></i></span><span class="pc-mtext">
+  <!-- <li class="pc-item"><a href="<?= site_url('erp/clients-list');?>" class="pc-link "><span class="pc-micon"><i data-feather="user-check"></i></span><span class="pc-mtext">
     <?= lang('Projects.xin_manage_clients');?>
-    </span></a></li>
+    </span></a></li> -->
   <!-- Leads -->
   
   <!-- Performance -->
-  <?php if(isset($setup_modules['performance'])): if($setup_modules['performance']==1):?>
+  <!-- <?php if(isset($setup_modules['performance'])): if($setup_modules['performance']==1):?>
   <li class="<?php if(!empty($arr_mod['talent_open']))echo $arr_mod['talent_open'];?> pc-item"> <a href="#" class="pc-link sidenav-toggle"> <span class="pc-micon"><i data-feather="aperture"></i></span>
     <?= lang('Dashboard.left_talent_management');?>
     </span><span class="pc-arrow"><i data-feather="chevron-right"></i></span> </a>
@@ -119,32 +122,32 @@ $setup_modules = unserialize($xin_com_system['setup_modules']);
         <?= lang('Performance.xin_goals_calendar');?>
         </a> </li>
     </ul>
-  </li>
+  </li> -->
   <?php endif; endif;?>
   <?php if(isset($setup_modules['recruitment'])): if($setup_modules['recruitment']==1):?>
   <!-- Recruitment -->
-  <li class="pc-item"> <a href="<?= site_url('erp/jobs-list');?>" class="pc-link"> <span class="pc-micon"><i data-feather="gitlab"></i></span><span class="pc-mtext">
+  <!-- <li class="pc-item"> <a href="<?= site_url('erp/jobs-list');?>" class="pc-link"> <span class="pc-micon"><i data-feather="gitlab"></i></span><span class="pc-mtext">
     <?= lang('Recruitment.xin_recruitment_ats');?>
     </span> </a> </li>
-  <?php endif; endif;?>
+  <?php endif; endif;?> -->
   <!-- Tickets -->
-  <li class="pc-item"> <a href="<?= site_url('erp/support-tickets');?>" class="pc-link"> <span class="pc-micon"><i data-feather="help-circle"></i></span><span class="pc-mtext">
+  <!-- <li class="pc-item"> <a href="<?= site_url('erp/support-tickets');?>" class="pc-link"> <span class="pc-micon"><i data-feather="help-circle"></i></span><span class="pc-mtext">
     <?= lang('Dashboard.dashboard_helpdesk');?>
-    </span> </a> </li>
+    </span> </a> </li> -->
   <!-- Invoices -->
 
  <!-- Estimates -->
    
   <!-- Leave -->
-  <li class="pc-item"> <a href="<?= site_url('erp/leave-list');?>" class="pc-link"> <span class="pc-micon"><i data-feather="plus-square"></i></span><span class="pc-mtext">
+  <!-- <li class="pc-item"> <a href="<?= site_url('erp/leave-list');?>" class="pc-link"> <span class="pc-micon"><i data-feather="plus-square"></i></span><span class="pc-mtext">
     <?= lang('Leave.left_leave_request');?>
     </span> </a> </li>
-    <?php if(isset($setup_modules['training'])): if($setup_modules['training']==1):?>
+    <?php if(isset($setup_modules['training'])): if($setup_modules['training']==1):?> -->
   <!-- Training Session -->
-  <li class="pc-item"> <a href="<?= site_url('erp/training-sessions');?>" class="pc-link"> <span class="pc-micon"><i data-feather="target"></i></span><span class="pc-mtext">
+  <!-- <li class="pc-item"> <a href="<?= site_url('erp/training-sessions');?>" class="pc-link"> <span class="pc-micon"><i data-feather="target"></i></span><span class="pc-mtext">
     <?= lang('Dashboard.left_training');?>
     </span> </a> </li>
-    <?php endif; endif;?>
+    <?php endif; endif;?> -->
   <!-- Disciplinary -->
   <li class="pc-item"> <a href="<?= site_url('erp/disciplinary-cases');?>" class="pc-link"> <span class="pc-micon"><i data-feather="alert-circle"></i></span><span class="pc-mtext">
     <?= lang('Dashboard.left_warnings');?>
