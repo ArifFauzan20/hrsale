@@ -38,7 +38,7 @@ $get_animate ='';
       </a> </li>
     <?php } ?>
     <?php if(in_array('designation1',staff_role_resource()) || $user_info['user_type'] == 'company') { ?>
-    <li class="nav-item active"> <a href="<?= site_url('erp/designation-list');?>" class="mb-3 nav-link"> <span class="sw-done-icon feather icon-check-circle"></span> <span class="sw-icon feather icon-list"></span>
+    <li class="nav-item clickable"> <a href="<?= site_url('erp/designation-list');?>" class="mb-3 nav-link"> <span class="sw-done-icon feather icon-check-circle"></span> <span class="sw-icon feather icon-list"></span>
       <?= lang('Dashboard.left_designation');?>
       <div class="text-muted small">
         <?= lang('Main.xin_set_up');?>

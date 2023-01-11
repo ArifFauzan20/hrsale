@@ -42,6 +42,15 @@ $get_animate ='';
       </div>
       </a> </li>
     <?php } ?>
+    <?php if(in_array('sergeant1',staff_role_resource()) || $user_info['user_type'] == 'company') { ?>
+    <li class="nav-item clickable"> <a href="<?= site_url('erp/sergeant-list');?>" class="mb-3 nav-link"> <span class="sw-done-icon feather icon-check-circle"></span> <span class="sw-icon feather icon-list"></span>
+      <?= lang('Dashboard.left_sergeant');?>
+      <div class="text-muted small">
+        <?= lang('Main.xin_set_up');?>
+        <?= lang('Dashboard.left_sergeants');?>
+      </div>
+      </a> </li>
+    <?php } ?>
     <?php if(in_array('news1',staff_role_resource()) || $user_info['user_type'] == 'company') { ?>
     <li class="nav-item clickable"> <a href="<?= site_url('erp/news-list');?>" class="mb-3 nav-link"> <span class="sw-done-icon feather icon-check-circle"></span> <span class="sw-icon feather icon-speaker"></span>
       <?= lang('Dashboard.left_announcements');?>

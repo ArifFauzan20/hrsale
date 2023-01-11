@@ -16,7 +16,7 @@ $SergeantModel = new SergeantModel();
 $get_animate = '';
 if($request->getGet('data') === 'sergeant' && $request->getGet('field_id')){
 $ifield_id = udecode($field_id);
-$result = $SergeantModel->where('segeant_id', $ifield_id)->first();
+$result = $SergeantModel->where('sergeant_id', $ifield_id)->first();
 $user_info = $UsersModel->where('user_id', $usession['sup_user_id'])->first();
 if($user_info['user_type'] == 'staff'){
    $main_department = $DepartmentModel->where('company_id', $user_info['company_id'])->findAll();

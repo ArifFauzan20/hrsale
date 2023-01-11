@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 24, 2022 at 10:50 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 7.4.30
+-- Host: localhost:3306
+-- Generation Time: Jan 11, 2023 at 02:22 AM
+-- Server version: 8.0.30
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hrsale2`
+-- Database: `hrsale`
 --
 
 -- --------------------------------------------------------
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `ci_advance_salary` (
-  `advance_salary_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `employee_id` int(111) NOT NULL,
+  `advance_salary_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `employee_id` int NOT NULL,
   `salary_type` varchar(100) DEFAULT NULL,
   `month_year` varchar(255) NOT NULL,
   `advance_amount` decimal(65,2) NOT NULL,
@@ -38,10 +38,10 @@ CREATE TABLE `ci_advance_salary` (
   `monthly_installment` decimal(65,2) NOT NULL,
   `total_paid` decimal(65,2) NOT NULL,
   `reason` text NOT NULL,
-  `status` int(11) DEFAULT NULL,
-  `is_deducted_from_salary` int(11) DEFAULT NULL,
+  `status` int DEFAULT NULL,
+  `is_deducted_from_salary` int DEFAULT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -50,18 +50,18 @@ CREATE TABLE `ci_advance_salary` (
 --
 
 CREATE TABLE `ci_announcements` (
-  `announcement_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `announcement_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `department_id` varchar(255) NOT NULL,
   `title` varchar(200) NOT NULL,
   `start_date` varchar(200) NOT NULL,
   `end_date` varchar(200) NOT NULL,
-  `published_by` int(111) NOT NULL,
+  `published_by` int NOT NULL,
   `summary` mediumtext NOT NULL,
   `description` mediumtext NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -70,11 +70,11 @@ CREATE TABLE `ci_announcements` (
 --
 
 CREATE TABLE `ci_assets` (
-  `assets_id` int(111) NOT NULL,
-  `assets_category_id` int(11) NOT NULL,
-  `brand_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
+  `assets_id` int NOT NULL,
+  `assets_category_id` int NOT NULL,
+  `brand_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `employee_id` int NOT NULL,
   `company_asset_code` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `purchase_date` varchar(255) NOT NULL,
@@ -84,9 +84,9 @@ CREATE TABLE `ci_assets` (
   `warranty_end_date` varchar(255) NOT NULL,
   `asset_note` text NOT NULL,
   `asset_image` varchar(255) NOT NULL,
-  `is_working` int(11) NOT NULL,
+  `is_working` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -95,11 +95,11 @@ CREATE TABLE `ci_assets` (
 --
 
 CREATE TABLE `ci_awards` (
-  `award_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `employee_id` int(200) NOT NULL,
-  `award_type_id` int(200) NOT NULL,
-  `associated_goals` text DEFAULT NULL,
+  `award_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `employee_id` int NOT NULL,
+  `award_type_id` int NOT NULL,
+  `associated_goals` text,
   `gift_item` varchar(200) NOT NULL,
   `cash_price` decimal(65,2) NOT NULL,
   `award_photo` varchar(255) NOT NULL,
@@ -107,7 +107,7 @@ CREATE TABLE `ci_awards` (
   `award_information` mediumtext NOT NULL,
   `description` mediumtext NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -116,13 +116,13 @@ CREATE TABLE `ci_awards` (
 --
 
 CREATE TABLE `ci_company_membership` (
-  `company_membership_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `membership_id` int(11) NOT NULL,
+  `company_membership_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `membership_id` int NOT NULL,
   `subscription_type` varchar(25) NOT NULL,
   `update_at` varchar(100) DEFAULT NULL,
   `created_at` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `ci_company_membership`
@@ -138,16 +138,16 @@ INSERT INTO `ci_company_membership` (`company_membership_id`, `company_id`, `mem
 --
 
 CREATE TABLE `ci_complaints` (
-  `complaint_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `complaint_from` int(111) NOT NULL,
+  `complaint_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `complaint_from` int NOT NULL,
   `title` varchar(255) NOT NULL,
   `complaint_date` varchar(255) NOT NULL,
   `complaint_against` mediumtext NOT NULL,
   `description` mediumtext NOT NULL,
-  `status` tinyint(2) NOT NULL,
+  `status` tinyint NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -156,14 +156,14 @@ CREATE TABLE `ci_complaints` (
 --
 
 CREATE TABLE `ci_contract_options` (
-  `contract_option_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `contract_option_id` int NOT NULL,
+  `user_id` int NOT NULL,
   `salay_type` varchar(200) DEFAULT NULL,
-  `contract_tax_option` int(11) NOT NULL,
-  `is_fixed` int(11) NOT NULL,
+  `contract_tax_option` int NOT NULL,
+  `is_fixed` int NOT NULL,
   `option_title` varchar(200) DEFAULT NULL,
-  `contract_amount` decimal(65,2) DEFAULT 0.00
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `contract_amount` decimal(65,2) DEFAULT '0.00'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -172,10 +172,10 @@ CREATE TABLE `ci_contract_options` (
 --
 
 CREATE TABLE `ci_countries` (
-  `country_id` int(11) NOT NULL,
+  `country_id` int NOT NULL,
   `country_code` varchar(255) NOT NULL,
   `country_name` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `ci_countries`
@@ -435,11 +435,11 @@ INSERT INTO `ci_countries` (`country_id`, `country_code`, `country_name`) VALUES
 --
 
 CREATE TABLE `ci_currencies` (
-  `currency_id` int(11) NOT NULL,
+  `currency_id` int NOT NULL,
   `country_name` varchar(150) NOT NULL,
   `currency_name` varchar(20) NOT NULL,
   `currency_code` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `ci_currencies`
@@ -608,10 +608,10 @@ INSERT INTO `ci_currencies` (`currency_id`, `country_name`, `currency_name`, `cu
 --
 
 CREATE TABLE `ci_database_backup` (
-  `backup_id` int(111) NOT NULL,
+  `backup_id` int NOT NULL,
   `backup_file` varchar(255) NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -620,13 +620,21 @@ CREATE TABLE `ci_database_backup` (
 --
 
 CREATE TABLE `ci_departments` (
-  `department_id` int(11) NOT NULL,
+  `department_id` int NOT NULL,
   `department_name` varchar(200) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `department_head` int(11) DEFAULT 0,
-  `added_by` int(111) NOT NULL,
+  `company_id` int NOT NULL,
+  `department_head` int DEFAULT '0',
+  `added_by` int NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `ci_departments`
+--
+
+INSERT INTO `ci_departments` (`department_id`, `department_name`, `company_id`, `department_head`, `added_by`, `created_at`) VALUES
+(16, 'Liutenant	', 2, 21, 2, '05-01-2023 01:26:44'),
+(19, 'IT', 2, 25, 2, '05-01-2023 03:58:05');
 
 -- --------------------------------------------------------
 
@@ -635,13 +643,22 @@ CREATE TABLE `ci_departments` (
 --
 
 CREATE TABLE `ci_designations` (
-  `designation_id` int(11) NOT NULL,
-  `department_id` int(200) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `designation_id` int NOT NULL,
+  `department_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `designation_name` varchar(200) NOT NULL,
   `description` text NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `ci_designations`
+--
+
+INSERT INTO `ci_designations` (`designation_id`, `department_id`, `company_id`, `designation_name`, `description`, `created_at`) VALUES
+(15, 16, 2, 'Sergeant', '', '05-01-2023 01:43:30'),
+(16, 16, 2, 'Staff Sergent', '', '05-01-2023 04:33:11'),
+(17, 20, 2, 'ds1', '', '10-01-2023 08:33:08');
 
 -- --------------------------------------------------------
 
@@ -650,14 +667,14 @@ CREATE TABLE `ci_designations` (
 --
 
 CREATE TABLE `ci_email_template` (
-  `template_id` int(111) NOT NULL,
+  `template_id` int NOT NULL,
   `template_code` varchar(255) NOT NULL,
   `template_type` varchar(100) NOT NULL,
   `name` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `message` longtext NOT NULL,
-  `status` tinyint(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `status` tinyint NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `ci_email_template`
@@ -685,12 +702,12 @@ INSERT INTO `ci_email_template` (`template_id`, `template_code`, `template_type`
 --
 
 CREATE TABLE `ci_employee_contacts` (
-  `contact_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `employee_id` int(111) NOT NULL,
+  `contact_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `employee_id` int NOT NULL,
   `relation` varchar(255) DEFAULT NULL,
-  `is_primary` int(111) DEFAULT NULL,
-  `is_dependent` int(111) DEFAULT NULL,
+  `is_primary` int DEFAULT NULL,
+  `is_dependent` int DEFAULT NULL,
   `contact_name` varchar(255) DEFAULT NULL,
   `work_phone` varchar(255) DEFAULT NULL,
   `work_phone_extension` varchar(255) DEFAULT NULL,
@@ -698,14 +715,14 @@ CREATE TABLE `ci_employee_contacts` (
   `home_phone` varchar(255) DEFAULT NULL,
   `work_email` varchar(255) DEFAULT NULL,
   `personal_email` varchar(255) DEFAULT NULL,
-  `address_1` mediumtext DEFAULT NULL,
-  `address_2` mediumtext DEFAULT NULL,
+  `address_1` mediumtext,
+  `address_2` mediumtext,
   `city` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL,
   `zipcode` varchar(255) DEFAULT NULL,
   `country` varchar(255) DEFAULT NULL,
   `created_at` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -714,17 +731,24 @@ CREATE TABLE `ci_employee_contacts` (
 --
 
 CREATE TABLE `ci_employee_exit` (
-  `exit_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `employee_id` int(111) NOT NULL,
+  `exit_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `employee_id` int NOT NULL,
   `exit_date` varchar(255) NOT NULL,
-  `exit_type_id` int(111) NOT NULL,
-  `exit_interview` int(111) NOT NULL,
-  `is_inactivate_account` int(111) NOT NULL,
+  `exit_type_id` int NOT NULL,
+  `exit_interview` int NOT NULL,
+  `is_inactivate_account` int NOT NULL,
   `reason` mediumtext NOT NULL,
-  `added_by` int(111) NOT NULL,
+  `added_by` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `ci_employee_exit`
+--
+
+INSERT INTO `ci_employee_exit` (`exit_id`, `company_id`, `employee_id`, `exit_date`, `exit_type_id`, `exit_interview`, `is_inactivate_account`, `reason`, `added_by`, `created_at`) VALUES
+(1, 2, 4, '2023-01-03', 168, 1, 0, 'test1', 2, '03-01-2023 01:13:39');
 
 -- --------------------------------------------------------
 
@@ -733,8 +757,8 @@ CREATE TABLE `ci_employee_exit` (
 --
 
 CREATE TABLE `ci_erp_company_settings` (
-  `setting_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `setting_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `default_currency` varchar(255) NOT NULL DEFAULT 'USD',
   `default_currency_symbol` varchar(100) NOT NULL DEFAULT 'USD',
   `notification_position` varchar(255) DEFAULT NULL,
@@ -749,15 +773,15 @@ CREATE TABLE `ci_erp_company_settings` (
   `stripe_secret_key` varchar(200) DEFAULT NULL,
   `stripe_publishable_key` varchar(200) DEFAULT NULL,
   `stripe_active` varchar(10) DEFAULT NULL,
-  `invoice_terms_condition` text DEFAULT NULL,
+  `invoice_terms_condition` text,
   `setup_modules` text NOT NULL,
   `header_background` varchar(100) NOT NULL DEFAULT 'bg-dark',
   `calendar_locale` varchar(100) NOT NULL DEFAULT 'en',
   `datepicker_locale` varchar(100) NOT NULL DEFAULT 'en',
-  `login_page` int(11) NOT NULL,
-  `login_page_text` text DEFAULT NULL,
+  `login_page` int NOT NULL,
+  `login_page_text` text,
   `updated_at` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `ci_erp_company_settings`
@@ -773,14 +797,14 @@ INSERT INTO `ci_erp_company_settings` (`setting_id`, `company_id`, `default_curr
 --
 
 CREATE TABLE `ci_erp_constants` (
-  `constants_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `constants_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `type` varchar(100) NOT NULL,
   `category_name` varchar(200) NOT NULL,
   `field_one` varchar(200) DEFAULT NULL,
   `field_two` varchar(200) DEFAULT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `ci_erp_constants`
@@ -874,7 +898,10 @@ INSERT INTO `ci_erp_constants` (`constants_id`, `company_id`, `type`, `category_
 (162, 2, 'income_type', 'Investment Income', 'Null', 'Null', '15-05-2021 06:12:55'),
 (163, 2, 'income_type', 'Retained Earnings', 'Null', 'Null', '15-05-2021 06:13:39'),
 (164, 2, 'income_type', 'Sales', 'Null', 'Null', '15-05-2021 06:14:27'),
-(165, 2, 'income_type', 'Other Income', 'Null', 'Null', '15-05-2021 06:15:47');
+(165, 2, 'income_type', 'Other Income', 'Null', 'Null', '15-05-2021 06:15:47'),
+(167, 2, 'goal_type', 'TRAINING CRYSTAL REPORT', 'Null', 'Null', '22-12-2022 09:56:34'),
+(168, 2, 'exit_type', 'test 1', 'Null', 'Null', '03-01-2023 01:13:14'),
+(170, 2, 'warning_type', 'contoh', 'Null', 'Null', '04-01-2023 11:23:56');
 
 -- --------------------------------------------------------
 
@@ -883,24 +910,24 @@ INSERT INTO `ci_erp_constants` (`constants_id`, `company_id`, `type`, `category_
 --
 
 CREATE TABLE `ci_erp_settings` (
-  `setting_id` int(111) NOT NULL,
+  `setting_id` int NOT NULL,
   `application_name` varchar(255) NOT NULL,
   `company_name` varchar(100) DEFAULT NULL,
   `trading_name` varchar(100) DEFAULT NULL,
   `registration_no` varchar(100) DEFAULT NULL,
   `government_tax` varchar(100) DEFAULT NULL,
-  `company_type_id` int(11) NOT NULL,
+  `company_type_id` int NOT NULL,
   `email` varchar(200) DEFAULT NULL,
   `contact_number` varchar(255) DEFAULT NULL,
-  `country` int(11) NOT NULL DEFAULT 0,
-  `address_1` text DEFAULT NULL,
-  `address_2` text DEFAULT NULL,
+  `country` int NOT NULL DEFAULT '0',
+  `address_1` text,
+  `address_2` text,
   `city` varchar(200) DEFAULT NULL,
   `zipcode` varchar(200) DEFAULT NULL,
   `state` varchar(200) DEFAULT NULL,
   `default_currency` varchar(255) NOT NULL DEFAULT 'USD',
   `is_ssl_available` varchar(11) NOT NULL DEFAULT 'on',
-  `currency_converter` mediumtext DEFAULT NULL,
+  `currency_converter` mediumtext,
   `notification_position` varchar(255) NOT NULL,
   `notification_close_btn` varchar(255) NOT NULL,
   `notification_bar` varchar(255) NOT NULL,
@@ -922,17 +949,17 @@ CREATE TABLE `ci_erp_settings` (
   `stripe_secret_key` varchar(200) NOT NULL,
   `stripe_publishable_key` varchar(200) NOT NULL,
   `stripe_active` varchar(10) NOT NULL,
-  `online_payment_account` int(11) NOT NULL,
-  `invoice_terms_condition` text DEFAULT NULL,
-  `enable_sms_notification` int(11) NOT NULL,
+  `online_payment_account` int NOT NULL,
+  `invoice_terms_condition` text,
+  `enable_sms_notification` int NOT NULL,
   `sms_from` varchar(200) NOT NULL,
-  `sms_service_plan_id` text DEFAULT NULL,
-  `sms_bearer_token` text DEFAULT NULL,
+  `sms_service_plan_id` text,
+  `sms_bearer_token` text,
   `auth_background` varchar(255) DEFAULT NULL,
   `hr_version` varchar(200) NOT NULL,
   `hr_release_date` varchar(100) NOT NULL,
   `updated_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `ci_erp_settings`
@@ -948,10 +975,10 @@ INSERT INTO `ci_erp_settings` (`setting_id`, `application_name`, `company_name`,
 --
 
 CREATE TABLE `ci_erp_users` (
-  `user_id` int(11) NOT NULL,
-  `user_role_id` int(11) DEFAULT NULL,
+  `user_id` int NOT NULL,
+  `user_role_id` int DEFAULT NULL,
   `user_type` varchar(50) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `company_id` int NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -961,30 +988,35 @@ CREATE TABLE `ci_erp_users` (
   `trading_name` varchar(100) DEFAULT NULL,
   `registration_no` varchar(100) DEFAULT NULL,
   `government_tax` varchar(100) DEFAULT NULL,
-  `company_type_id` int(11) DEFAULT NULL,
+  `company_type_id` int DEFAULT NULL,
   `profile_photo` varchar(255) NOT NULL,
   `contact_number` varchar(255) DEFAULT NULL,
   `gender` varchar(20) NOT NULL,
-  `address_1` text DEFAULT NULL,
-  `address_2` text DEFAULT NULL,
+  `address_1` text,
+  `address_2` text,
   `city` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL,
   `zipcode` varchar(255) DEFAULT NULL,
-  `country` int(11) DEFAULT NULL,
+  `country` int DEFAULT NULL,
   `last_login_date` varchar(255) DEFAULT NULL,
   `last_logout_date` varchar(200) DEFAULT NULL,
   `last_login_ip` varchar(255) DEFAULT NULL,
-  `is_logged_in` int(11) DEFAULT NULL,
-  `is_active` int(11) NOT NULL DEFAULT 1,
+  `is_logged_in` int DEFAULT NULL,
+  `is_active` int NOT NULL DEFAULT '1',
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `ci_erp_users`
 --
 
 INSERT INTO `ci_erp_users` (`user_id`, `user_role_id`, `user_type`, `company_id`, `first_name`, `last_name`, `email`, `username`, `password`, `company_name`, `trading_name`, `registration_no`, `government_tax`, `company_type_id`, `profile_photo`, `contact_number`, `gender`, `address_1`, `address_2`, `city`, `state`, `zipcode`, `country`, `last_login_date`, `last_logout_date`, `last_login_ip`, `is_logged_in`, `is_active`, `created_at`) VALUES
-(2, 0, 'company', 0, 'Frances', 'Burns', 'kelly.flynn@hrsale.com', 'kelly.flynn', '$2y$12$8qh6dbDeYQalBNHOcdmv1ePwr4UIyr1wD0MToqCP6QLYi8mO7gX9a', 'HRSALE', 'TRD-9853142', 'RG-153974520', 'TX-74521583', 6, 'a-sm.jpg', '1234567890', '1', 'Sadovnicheskaya embankment 79', 'MD 20815', 'Moscow', 'Moscow', '20834', 182, '04-08-2021 12:17:50', '24-11-2022 02:09:15', '::1', 0, 1, '15-05-2021 08:11:26');
+(2, 0, 'company', 2, 'Aileen', 'SMP', 'aileen@gmail.com', 'aileen', '$2y$12$5h9DaBUNerkZ04Yl4G8lAOQGlX1AWtOeCvHy8ar31zidMkULWrspu', 'PT SINAR METRINDO PERKASA', 'TRD-9853142', 'RG-153974520', 'TX-74521583', 3, 'a-sm.jpg', '081245422', '1', 'jl taman aries', 'MD 20815', 'jakarta barat', 'DKI JAKARTA', '20834', 101, '10-01-2023 19:03:40', '04-01-2023 23:24:44', '::1', 1, 1, '15-05-2021 08:11:26'),
+(21, 2, 'staff', 2, 'Rikardo', 'Rahmat', 'rikardo@gmail.com', 'rikardo', '$2y$12$Peb3dKZsGxBtr0zA0fKLgexd8eTu85U4LStofpxOdlPxkuOqCnCqm', 'PT SINAR METRINDO PERKASA', '', '', '', 0, '1.png', '0812365988', '1', '', '', '', '', '', 0, '0', '0', '0', 0, 1, '05-01-2023 01:52:43'),
+(23, 7, 'staff', 2, 'David', 'Condro', 'david@mail.com', 'david123', '$2y$12$ngHLX1MZvDUMV3EtmRyj.eCmq.Z5LcqEkoVS4mOjntlLEFUalIIE6', 'PT SINAR METRINDO PERKASA', '', '', '', 0, '2.png', '081256555', '1', '', '', '', '', '', 0, '0', '0', '0', 0, 1, '05-01-2023 04:37:13'),
+(24, 8, 'staff', 2, 'Radit', 'epa', 'radit@mail.com', 'radit123', '$2y$12$nX/kWdBOzkMA/eO1m.C/uem6csqL8TVXA5qRtA/qX76NNw.KfUGVC', 'PT SINAR METRINDO PERKASA', '', '', '', 0, '1.png', '084557855', '1', '', '', '', '', '', 0, '0', '0', '0', 0, 1, '05-01-2023 04:38:40'),
+(25, 6, 'staff', 2, 'letnan', '2', 'letnan@mail.com', 'letnan123', '$2y$12$GHC4y8c/XzKFRJdeR65bVunBC3VCAkzt33c8R1lKnRuujia6v4IoC', 'PT SINAR METRINDO PERKASA', '', '', '', 0, 'bugs spl.PNG', '081254555', '1', '', '', '', '', '', 0, '0', '0', '0', 0, 1, '10-01-2023 02:22:58'),
+(28, 6, 'staff', 2, 'jaka', '123', 'jaka@mail.com', 'jaka123', '$2y$12$3T6M1.IviKLw4LPs1TFx8.thlXmhB76HYdKD.g3xQvkHhZb8WIDU.', 'PT SINAR METRINDO PERKASA', '', '', '', 0, 't.jpg', '0812456885', '2', '', '', '', '', '', 0, '0', '0', '0', 0, 1, '10-01-2023 09:01:23');
 
 -- --------------------------------------------------------
 
@@ -993,42 +1025,53 @@ INSERT INTO `ci_erp_users` (`user_id`, `user_role_id`, `user_type`, `company_id`
 --
 
 CREATE TABLE `ci_erp_users_details` (
-  `staff_details_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `staff_details_id` int NOT NULL,
+  `user_id` int NOT NULL,
   `employee_id` varchar(255) NOT NULL,
-  `department_id` int(11) NOT NULL,
-  `designation_id` int(11) NOT NULL,
-  `office_shift_id` int(11) NOT NULL,
+  `department_id` int NOT NULL,
+  `designation_id` int NOT NULL,
+  `sergeant_id` int NOT NULL,
+  `office_shift_id` int NOT NULL,
   `basic_salary` decimal(65,2) NOT NULL,
   `hourly_rate` decimal(65,2) NOT NULL,
-  `salay_type` int(11) NOT NULL,
+  `salay_type` int NOT NULL,
   `leave_categories` varchar(255) NOT NULL DEFAULT 'all',
-  `role_description` mediumtext DEFAULT NULL,
+  `role_description` mediumtext,
   `date_of_joining` varchar(200) DEFAULT NULL,
   `date_of_leaving` varchar(200) DEFAULT NULL,
   `date_of_birth` varchar(200) DEFAULT NULL,
-  `marital_status` int(11) DEFAULT NULL,
-  `religion_id` int(11) DEFAULT NULL,
+  `marital_status` int DEFAULT NULL,
+  `religion_id` int DEFAULT NULL,
   `blood_group` varchar(200) DEFAULT NULL,
-  `citizenship_id` int(11) DEFAULT NULL,
-  `bio` mediumtext DEFAULT NULL,
-  `experience` int(11) DEFAULT NULL,
-  `fb_profile` mediumtext DEFAULT NULL,
-  `twitter_profile` mediumtext DEFAULT NULL,
-  `gplus_profile` mediumtext DEFAULT NULL,
-  `linkedin_profile` mediumtext DEFAULT NULL,
+  `citizenship_id` int DEFAULT NULL,
+  `bio` mediumtext,
+  `experience` int DEFAULT NULL,
+  `fb_profile` mediumtext,
+  `twitter_profile` mediumtext,
+  `gplus_profile` mediumtext,
+  `linkedin_profile` mediumtext,
   `account_title` varchar(255) DEFAULT NULL,
   `account_number` varchar(255) DEFAULT NULL,
   `bank_name` varchar(255) DEFAULT NULL,
   `iban` varchar(255) DEFAULT NULL,
   `swift_code` varchar(255) DEFAULT NULL,
-  `bank_branch` mediumtext DEFAULT NULL,
+  `bank_branch` mediumtext,
   `contact_full_name` varchar(200) DEFAULT NULL,
   `contact_phone_no` varchar(200) DEFAULT NULL,
   `contact_email` varchar(200) DEFAULT NULL,
-  `contact_address` mediumtext DEFAULT NULL,
+  `contact_address` mediumtext,
   `created_at` varchar(200) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `ci_erp_users_details`
+--
+
+INSERT INTO `ci_erp_users_details` (`staff_details_id`, `user_id`, `employee_id`, `department_id`, `designation_id`, `sergeant_id`, `office_shift_id`, `basic_salary`, `hourly_rate`, `salay_type`, `leave_categories`, `role_description`, `date_of_joining`, `date_of_leaving`, `date_of_birth`, `marital_status`, `religion_id`, `blood_group`, `citizenship_id`, `bio`, `experience`, `fb_profile`, `twitter_profile`, `gplus_profile`, `linkedin_profile`, `account_title`, `account_number`, `bank_name`, `iban`, `swift_code`, `bank_branch`, `contact_full_name`, `contact_phone_no`, `contact_email`, `contact_address`, `created_at`) VALUES
+(21, 23, '703123', 16, 15, 0, 1, '0.00', '0.00', 1, '0', 'Enter role description here..', '05-01-2023', '', '', 0, 0, '', 0, 'Enter staff bio here..', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '05-01-2023 04:37:13'),
+(22, 24, '813883', 16, 15, 0, 1, '0.00', '0.00', 1, '0', 'Enter role description here..', '05-01-2023', '', '', 0, 0, '', 0, 'Enter staff bio here..', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '05-01-2023 04:38:40'),
+(23, 25, '077775', 16, 15, 0, 1, '0.00', '0.00', 1, '0', 'Enter role description here..', '10-01-2023', '', '', 0, 0, '', 0, 'Enter staff bio here..', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '10-01-2023 02:22:58'),
+(24, 28, '314689', 16, 15, 1, 1, '0.00', '0.00', 1, '0', 'Enter role description here..', '10-01-2023', '', '', 0, 0, '', 0, 'Enter staff bio here..', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '10-01-2023 09:01:23');
 
 -- --------------------------------------------------------
 
@@ -1037,12 +1080,12 @@ CREATE TABLE `ci_erp_users_details` (
 --
 
 CREATE TABLE `ci_erp_users_role` (
-  `role_id` int(11) NOT NULL,
+  `role_id` int NOT NULL,
   `role_name` varchar(200) DEFAULT NULL,
   `role_access` varchar(200) DEFAULT NULL,
-  `role_resources` text DEFAULT NULL,
+  `role_resources` text,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1051,26 +1094,26 @@ CREATE TABLE `ci_erp_users_role` (
 --
 
 CREATE TABLE `ci_estimates` (
-  `estimate_id` int(111) NOT NULL,
+  `estimate_id` int NOT NULL,
   `estimate_number` varchar(255) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `client_id` int(11) NOT NULL,
-  `project_id` int(111) NOT NULL,
+  `company_id` int NOT NULL,
+  `client_id` int NOT NULL,
+  `project_id` int NOT NULL,
   `estimate_month` varchar(255) DEFAULT NULL,
   `estimate_date` varchar(255) NOT NULL,
   `estimate_due_date` varchar(255) NOT NULL,
-  `sub_total_amount` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `sub_total_amount` decimal(65,2) NOT NULL DEFAULT '0.00',
   `discount_type` varchar(11) NOT NULL,
-  `discount_figure` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `total_tax` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `discount_figure` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `total_tax` decimal(65,2) NOT NULL DEFAULT '0.00',
   `tax_type` varchar(100) DEFAULT NULL,
-  `total_discount` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `grand_total` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `total_discount` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `grand_total` decimal(65,2) NOT NULL DEFAULT '0.00',
   `estimate_note` mediumtext NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `payment_method` int(11) NOT NULL,
+  `payment_method` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1079,15 +1122,15 @@ CREATE TABLE `ci_estimates` (
 --
 
 CREATE TABLE `ci_estimates_items` (
-  `estimate_item_id` int(111) NOT NULL,
-  `estimate_id` int(111) NOT NULL,
-  `project_id` int(111) NOT NULL,
+  `estimate_item_id` int NOT NULL,
+  `estimate_id` int NOT NULL,
+  `project_id` int NOT NULL,
   `item_name` varchar(255) NOT NULL,
   `item_qty` varchar(255) NOT NULL,
-  `item_unit_price` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `item_sub_total` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `item_unit_price` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `item_sub_total` decimal(65,2) NOT NULL DEFAULT '0.00',
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1096,8 +1139,8 @@ CREATE TABLE `ci_estimates_items` (
 --
 
 CREATE TABLE `ci_events` (
-  `event_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `event_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `employee_id` varchar(255) DEFAULT NULL,
   `event_title` varchar(255) NOT NULL,
   `event_date` varchar(255) NOT NULL,
@@ -1105,7 +1148,7 @@ CREATE TABLE `ci_events` (
   `event_note` mediumtext NOT NULL,
   `event_color` varchar(200) NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1114,23 +1157,16 @@ CREATE TABLE `ci_events` (
 --
 
 CREATE TABLE `ci_finance_accounts` (
-  `account_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `account_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `account_name` varchar(255) NOT NULL,
-  `account_balance` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `account_opening_balance` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `account_balance` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `account_opening_balance` decimal(65,2) NOT NULL DEFAULT '0.00',
   `account_number` varchar(255) NOT NULL,
   `branch_code` varchar(255) NOT NULL,
   `bank_branch` text NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `ci_finance_accounts`
---
-
-INSERT INTO `ci_finance_accounts` (`account_id`, `company_id`, `account_name`, `account_balance`, `account_opening_balance`, `account_number`, `branch_code`, `bank_branch`, `created_at`) VALUES
-(1, 2, 'adadad', '0.00', '0.00', '34324', 'adad', 'asdada', '24-11-2022 02:09:04');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1139,13 +1175,13 @@ INSERT INTO `ci_finance_accounts` (`account_id`, `company_id`, `account_name`, `
 --
 
 CREATE TABLE `ci_finance_entity` (
-  `entity_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `entity_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `name` varchar(100) NOT NULL,
   `contact_number` varchar(100) NOT NULL,
   `type` varchar(15) NOT NULL,
   `created_at` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1154,22 +1190,22 @@ CREATE TABLE `ci_finance_entity` (
 --
 
 CREATE TABLE `ci_finance_membership_invoices` (
-  `membership_invoice_id` int(11) NOT NULL,
+  `membership_invoice_id` int NOT NULL,
   `invoice_id` varchar(50) DEFAULT NULL,
-  `company_id` int(11) NOT NULL,
-  `membership_id` int(11) NOT NULL,
+  `company_id` int NOT NULL,
+  `membership_id` int NOT NULL,
   `subscription_id` varchar(50) DEFAULT NULL,
   `membership_type` varchar(200) NOT NULL,
   `subscription` varchar(200) NOT NULL,
   `invoice_month` varchar(255) DEFAULT NULL,
-  `membership_price` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `membership_price` decimal(65,2) NOT NULL DEFAULT '0.00',
   `payment_method` varchar(200) NOT NULL,
   `transaction_date` varchar(200) NOT NULL,
   `description` mediumtext NOT NULL,
-  `receipt_url` longtext DEFAULT NULL,
+  `receipt_url` longtext,
   `source_info` varchar(10) DEFAULT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `ci_finance_membership_invoices`
@@ -1185,23 +1221,23 @@ INSERT INTO `ci_finance_membership_invoices` (`membership_invoice_id`, `invoice_
 --
 
 CREATE TABLE `ci_finance_transactions` (
-  `transaction_id` int(11) NOT NULL,
-  `account_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `staff_id` int(11) NOT NULL,
+  `transaction_id` int NOT NULL,
+  `account_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `staff_id` int NOT NULL,
   `transaction_date` varchar(255) NOT NULL,
   `transaction_type` varchar(100) NOT NULL,
-  `entity_id` int(11) NOT NULL,
+  `entity_id` int NOT NULL,
   `entity_type` varchar(100) DEFAULT NULL,
-  `entity_category_id` int(11) NOT NULL,
+  `entity_category_id` int NOT NULL,
   `description` mediumtext NOT NULL,
-  `amount` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `amount` decimal(65,2) NOT NULL DEFAULT '0.00',
   `dr_cr` enum('dr','cr') NOT NULL,
-  `payment_method_id` int(11) NOT NULL,
+  `payment_method_id` int NOT NULL,
   `reference` varchar(100) DEFAULT NULL,
   `attachment_file` varchar(100) DEFAULT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1210,15 +1246,15 @@ CREATE TABLE `ci_finance_transactions` (
 --
 
 CREATE TABLE `ci_holidays` (
-  `holiday_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `holiday_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `event_name` varchar(200) NOT NULL,
   `description` mediumtext NOT NULL,
   `start_date` varchar(200) NOT NULL,
   `end_date` varchar(200) NOT NULL,
   `is_publish` tinyint(1) NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1227,26 +1263,26 @@ CREATE TABLE `ci_holidays` (
 --
 
 CREATE TABLE `ci_invoices` (
-  `invoice_id` int(111) NOT NULL,
+  `invoice_id` int NOT NULL,
   `invoice_number` varchar(255) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `client_id` int(11) NOT NULL,
-  `project_id` int(111) NOT NULL,
+  `company_id` int NOT NULL,
+  `client_id` int NOT NULL,
+  `project_id` int NOT NULL,
   `invoice_month` varchar(255) DEFAULT NULL,
   `invoice_date` varchar(255) NOT NULL,
   `invoice_due_date` varchar(255) NOT NULL,
-  `sub_total_amount` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `sub_total_amount` decimal(65,2) NOT NULL DEFAULT '0.00',
   `discount_type` varchar(11) NOT NULL,
-  `discount_figure` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `total_tax` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `discount_figure` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `total_tax` decimal(65,2) NOT NULL DEFAULT '0.00',
   `tax_type` varchar(100) DEFAULT NULL,
-  `total_discount` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `grand_total` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `total_discount` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `grand_total` decimal(65,2) NOT NULL DEFAULT '0.00',
   `invoice_note` mediumtext NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `payment_method` int(11) NOT NULL,
+  `payment_method` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1255,15 +1291,15 @@ CREATE TABLE `ci_invoices` (
 --
 
 CREATE TABLE `ci_invoices_items` (
-  `invoice_item_id` int(111) NOT NULL,
-  `invoice_id` int(111) NOT NULL,
-  `project_id` int(111) NOT NULL,
+  `invoice_item_id` int NOT NULL,
+  `invoice_id` int NOT NULL,
+  `project_id` int NOT NULL,
   `item_name` varchar(255) NOT NULL,
   `item_qty` varchar(255) NOT NULL,
-  `item_unit_price` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `item_sub_total` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `item_unit_price` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `item_sub_total` decimal(65,2) NOT NULL DEFAULT '0.00',
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1272,13 +1308,13 @@ CREATE TABLE `ci_invoices_items` (
 --
 
 CREATE TABLE `ci_languages` (
-  `language_id` int(111) NOT NULL,
+  `language_id` int NOT NULL,
   `language_name` varchar(255) NOT NULL,
   `language_code` varchar(255) NOT NULL,
   `language_flag` varchar(255) NOT NULL,
-  `is_active` int(11) NOT NULL,
+  `is_active` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `ci_languages`
@@ -1303,23 +1339,30 @@ INSERT INTO `ci_languages` (`language_id`, `language_name`, `language_code`, `la
 --
 
 CREATE TABLE `ci_leads` (
-  `lead_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `lead_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `first_name` varchar(255) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `profile_photo` varchar(255) DEFAULT NULL,
   `contact_number` varchar(255) DEFAULT NULL,
-  `gender` int(11) NOT NULL,
-  `address_1` text DEFAULT NULL,
-  `address_2` text DEFAULT NULL,
+  `gender` int NOT NULL,
+  `address_1` text,
+  `address_2` text,
   `city` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL,
   `zipcode` varchar(255) DEFAULT NULL,
-  `country` int(11) NOT NULL,
-  `status` int(11) NOT NULL,
+  `country` int NOT NULL,
+  `status` int NOT NULL,
   `created_at` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `ci_leads`
+--
+
+INSERT INTO `ci_leads` (`lead_id`, `company_id`, `first_name`, `last_name`, `email`, `profile_photo`, `contact_number`, `gender`, `address_1`, `address_2`, `city`, `state`, `zipcode`, `country`, `status`, `created_at`) VALUES
+(1, 2, 'jaka', 'kakak', 'jaka1@gmail.com', 'server.png', '08125469547', 1, '', '', '', '', '', 0, 1, '22-12-2022 09:39:32');
 
 -- --------------------------------------------------------
 
@@ -1328,13 +1371,13 @@ CREATE TABLE `ci_leads` (
 --
 
 CREATE TABLE `ci_leads_followup` (
-  `followup_id` int(11) NOT NULL,
-  `lead_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `followup_id` int NOT NULL,
+  `lead_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `next_followup` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -1343,19 +1386,19 @@ CREATE TABLE `ci_leads_followup` (
 --
 
 CREATE TABLE `ci_leave_applications` (
-  `leave_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `employee_id` int(222) NOT NULL,
-  `leave_type_id` int(222) NOT NULL,
+  `leave_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `employee_id` int NOT NULL,
+  `leave_type_id` int NOT NULL,
   `from_date` varchar(200) NOT NULL,
   `to_date` varchar(200) NOT NULL,
   `reason` mediumtext NOT NULL,
-  `remarks` mediumtext DEFAULT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `remarks` mediumtext,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `is_half_day` tinyint(1) DEFAULT NULL,
   `leave_attachment` varchar(255) DEFAULT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1364,8 +1407,8 @@ CREATE TABLE `ci_leave_applications` (
 --
 
 CREATE TABLE `ci_meetings` (
-  `meeting_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `meeting_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `employee_id` varchar(255) DEFAULT NULL,
   `meeting_title` varchar(255) NOT NULL,
   `meeting_date` varchar(255) NOT NULL,
@@ -1374,7 +1417,7 @@ CREATE TABLE `ci_meetings` (
   `meeting_note` mediumtext NOT NULL,
   `meeting_color` varchar(200) NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1383,15 +1426,15 @@ CREATE TABLE `ci_meetings` (
 --
 
 CREATE TABLE `ci_membership` (
-  `membership_id` int(11) NOT NULL,
+  `membership_id` int NOT NULL,
   `subscription_id` varchar(100) DEFAULT NULL,
   `membership_type` varchar(200) NOT NULL,
-  `price` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `plan_duration` int(11) NOT NULL,
-  `total_employees` int(11) NOT NULL DEFAULT 0,
+  `price` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `plan_duration` int NOT NULL,
+  `total_employees` int NOT NULL DEFAULT '0',
   `description` mediumtext NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `ci_membership`
@@ -1407,17 +1450,17 @@ INSERT INTO `ci_membership` (`membership_id`, `subscription_id`, `membership_typ
 --
 
 CREATE TABLE `ci_module_attributes` (
-  `custom_field_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `module_id` int(11) NOT NULL,
+  `custom_field_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `module_id` int NOT NULL,
   `attribute` varchar(255) NOT NULL,
   `attribute_label` varchar(255) NOT NULL,
   `attribute_type` varchar(255) NOT NULL,
   `col_width` varchar(100) DEFAULT NULL,
-  `validation` int(11) NOT NULL,
-  `priority` int(11) NOT NULL,
+  `validation` int NOT NULL,
+  `priority` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1426,11 +1469,11 @@ CREATE TABLE `ci_module_attributes` (
 --
 
 CREATE TABLE `ci_module_attributes_select_value` (
-  `attributes_select_value_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `custom_field_id` int(11) NOT NULL,
+  `attributes_select_value_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `custom_field_id` int NOT NULL,
   `select_label` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1439,13 +1482,13 @@ CREATE TABLE `ci_module_attributes_select_value` (
 --
 
 CREATE TABLE `ci_module_attributes_values` (
-  `attributes_value_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `module_attributes_id` int(11) NOT NULL,
-  `attribute_value` text DEFAULT NULL,
+  `attributes_value_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `module_attributes_id` int NOT NULL,
+  `attribute_value` text,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1454,8 +1497,8 @@ CREATE TABLE `ci_module_attributes_values` (
 --
 
 CREATE TABLE `ci_office_shifts` (
-  `office_shift_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `office_shift_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `shift_name` varchar(255) NOT NULL,
   `monday_in_time` varchar(222) NOT NULL,
   `monday_out_time` varchar(222) NOT NULL,
@@ -1472,7 +1515,14 @@ CREATE TABLE `ci_office_shifts` (
   `sunday_in_time` varchar(222) NOT NULL,
   `sunday_out_time` varchar(222) NOT NULL,
   `created_at` varchar(222) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `ci_office_shifts`
+--
+
+INSERT INTO `ci_office_shifts` (`office_shift_id`, `company_id`, `shift_name`, `monday_in_time`, `monday_out_time`, `tuesday_in_time`, `tuesday_out_time`, `wednesday_in_time`, `wednesday_out_time`, `thursday_in_time`, `thursday_out_time`, `friday_in_time`, `friday_out_time`, `saturday_in_time`, `saturday_out_time`, `sunday_in_time`, `sunday_out_time`, `created_at`) VALUES
+(1, 2, 'office hour', '07:37', '17:14', '', '', '', '', '', '', '', '', '', '', '', '', '22-12-2022 10:14:02');
 
 -- --------------------------------------------------------
 
@@ -1481,15 +1531,15 @@ CREATE TABLE `ci_office_shifts` (
 --
 
 CREATE TABLE `ci_official_documents` (
-  `document_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `document_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `license_name` varchar(255) NOT NULL,
   `document_type` varchar(255) NOT NULL,
   `license_no` varchar(200) DEFAULT NULL,
   `expiry_date` varchar(200) DEFAULT NULL,
   `document_file` varchar(255) NOT NULL,
   `created_at` varchar(200) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1498,32 +1548,32 @@ CREATE TABLE `ci_official_documents` (
 --
 
 CREATE TABLE `ci_payslips` (
-  `payslip_id` int(11) NOT NULL,
+  `payslip_id` int NOT NULL,
   `payslip_key` varchar(200) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `staff_id` int(11) NOT NULL,
+  `company_id` int NOT NULL,
+  `staff_id` int NOT NULL,
   `salary_month` varchar(200) NOT NULL,
-  `wages_type` int(11) NOT NULL,
+  `wages_type` int NOT NULL,
   `payslip_type` varchar(50) NOT NULL,
-  `basic_salary` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `daily_wages` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `basic_salary` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `daily_wages` decimal(65,2) NOT NULL DEFAULT '0.00',
   `hours_worked` varchar(50) NOT NULL DEFAULT '0',
-  `total_allowances` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `total_commissions` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `total_statutory_deductions` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `total_other_payments` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `net_salary` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `payment_method` int(11) NOT NULL,
+  `total_allowances` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `total_commissions` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `total_statutory_deductions` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `total_other_payments` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `net_salary` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `payment_method` int NOT NULL,
   `pay_comments` mediumtext NOT NULL,
-  `is_payment` int(11) NOT NULL,
+  `is_payment` int NOT NULL,
   `year_to_date` varchar(200) NOT NULL,
-  `is_advance_salary_deduct` int(11) NOT NULL,
+  `is_advance_salary_deduct` int NOT NULL,
   `advance_salary_amount` decimal(65,2) DEFAULT NULL,
-  `is_loan_deduct` int(11) NOT NULL,
+  `is_loan_deduct` int NOT NULL,
   `loan_amount` decimal(65,2) NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1532,16 +1582,16 @@ CREATE TABLE `ci_payslips` (
 --
 
 CREATE TABLE `ci_payslip_allowances` (
-  `payslip_allowances_id` int(11) NOT NULL,
-  `payslip_id` int(11) NOT NULL,
-  `staff_id` int(11) NOT NULL,
-  `is_taxable` int(11) NOT NULL,
-  `is_fixed` int(11) NOT NULL,
+  `payslip_allowances_id` int NOT NULL,
+  `payslip_id` int NOT NULL,
+  `staff_id` int NOT NULL,
+  `is_taxable` int NOT NULL,
+  `is_fixed` int NOT NULL,
   `pay_title` varchar(200) NOT NULL,
-  `pay_amount` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `pay_amount` decimal(65,2) NOT NULL DEFAULT '0.00',
   `salary_month` varchar(200) NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1550,16 +1600,16 @@ CREATE TABLE `ci_payslip_allowances` (
 --
 
 CREATE TABLE `ci_payslip_commissions` (
-  `payslip_commissions_id` int(11) NOT NULL,
-  `payslip_id` int(11) NOT NULL,
-  `staff_id` int(11) NOT NULL,
-  `is_taxable` int(11) NOT NULL,
-  `is_fixed` int(11) NOT NULL,
+  `payslip_commissions_id` int NOT NULL,
+  `payslip_id` int NOT NULL,
+  `staff_id` int NOT NULL,
+  `is_taxable` int NOT NULL,
+  `is_fixed` int NOT NULL,
   `pay_title` varchar(200) NOT NULL,
-  `pay_amount` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `pay_amount` decimal(65,2) NOT NULL DEFAULT '0.00',
   `salary_month` varchar(200) NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1568,16 +1618,16 @@ CREATE TABLE `ci_payslip_commissions` (
 --
 
 CREATE TABLE `ci_payslip_other_payments` (
-  `payslip_other_payment_id` int(11) NOT NULL,
-  `payslip_id` int(11) NOT NULL,
-  `staff_id` int(11) NOT NULL,
-  `is_taxable` int(11) NOT NULL,
-  `is_fixed` int(11) NOT NULL,
+  `payslip_other_payment_id` int NOT NULL,
+  `payslip_id` int NOT NULL,
+  `staff_id` int NOT NULL,
+  `is_taxable` int NOT NULL,
+  `is_fixed` int NOT NULL,
   `pay_title` varchar(200) NOT NULL,
-  `pay_amount` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `pay_amount` decimal(65,2) NOT NULL DEFAULT '0.00',
   `salary_month` varchar(200) NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1586,15 +1636,15 @@ CREATE TABLE `ci_payslip_other_payments` (
 --
 
 CREATE TABLE `ci_payslip_statutory_deductions` (
-  `payslip_deduction_id` int(11) NOT NULL,
-  `payslip_id` int(11) NOT NULL,
-  `staff_id` int(11) NOT NULL,
-  `is_fixed` int(11) NOT NULL,
+  `payslip_deduction_id` int NOT NULL,
+  `payslip_id` int NOT NULL,
+  `staff_id` int NOT NULL,
+  `is_fixed` int NOT NULL,
   `pay_title` varchar(200) NOT NULL,
-  `pay_amount` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `pay_amount` decimal(65,2) NOT NULL DEFAULT '0.00',
   `salary_month` varchar(200) NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1603,15 +1653,15 @@ CREATE TABLE `ci_payslip_statutory_deductions` (
 --
 
 CREATE TABLE `ci_performance_appraisal` (
-  `performance_appraisal_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `employee_id` int(111) NOT NULL,
+  `performance_appraisal_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `employee_id` int NOT NULL,
   `title` varchar(200) DEFAULT NULL,
   `appraisal_year_month` varchar(255) NOT NULL,
   `remarks` mediumtext NOT NULL,
-  `added_by` int(111) NOT NULL,
+  `added_by` int NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1620,13 +1670,13 @@ CREATE TABLE `ci_performance_appraisal` (
 --
 
 CREATE TABLE `ci_performance_appraisal_options` (
-  `performance_appraisal_options_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `appraisal_id` int(11) NOT NULL,
+  `performance_appraisal_options_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `appraisal_id` int NOT NULL,
   `appraisal_type` varchar(200) NOT NULL,
-  `appraisal_option_id` int(11) NOT NULL,
-  `appraisal_option_value` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `appraisal_option_id` int NOT NULL,
+  `appraisal_option_value` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1635,13 +1685,13 @@ CREATE TABLE `ci_performance_appraisal_options` (
 --
 
 CREATE TABLE `ci_performance_indicator` (
-  `performance_indicator_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `performance_indicator_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `title` varchar(255) DEFAULT NULL,
-  `designation_id` int(111) NOT NULL,
-  `added_by` int(111) NOT NULL,
+  `designation_id` int NOT NULL,
+  `added_by` int NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1650,13 +1700,13 @@ CREATE TABLE `ci_performance_indicator` (
 --
 
 CREATE TABLE `ci_performance_indicator_options` (
-  `performance_indicator_options_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `indicator_id` int(11) NOT NULL,
+  `performance_indicator_options_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `indicator_id` int NOT NULL,
   `indicator_type` varchar(200) NOT NULL,
-  `indicator_option_id` int(11) NOT NULL,
-  `indicator_option_value` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `indicator_option_id` int NOT NULL,
+  `indicator_option_value` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1665,14 +1715,14 @@ CREATE TABLE `ci_performance_indicator_options` (
 --
 
 CREATE TABLE `ci_policies` (
-  `policy_id` int(111) NOT NULL,
-  `company_id` int(111) NOT NULL,
+  `policy_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` longtext NOT NULL,
   `attachment` varchar(255) DEFAULT NULL,
-  `added_by` int(111) NOT NULL,
+  `added_by` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1681,25 +1731,25 @@ CREATE TABLE `ci_policies` (
 --
 
 CREATE TABLE `ci_projects` (
-  `project_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `client_id` int(11) NOT NULL,
+  `project_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `client_id` int NOT NULL,
   `title` varchar(255) NOT NULL,
   `start_date` varchar(255) NOT NULL,
   `end_date` varchar(255) NOT NULL,
-  `assigned_to` mediumtext DEFAULT NULL,
-  `associated_goals` text DEFAULT NULL,
+  `assigned_to` mediumtext,
+  `associated_goals` text,
   `priority` varchar(255) NOT NULL,
   `project_no` varchar(255) DEFAULT NULL,
   `budget_hours` varchar(255) DEFAULT NULL,
   `summary` mediumtext NOT NULL,
-  `description` mediumtext DEFAULT NULL,
+  `description` mediumtext,
   `project_progress` varchar(255) NOT NULL,
-  `project_note` longtext DEFAULT NULL,
-  `status` tinyint(2) NOT NULL,
-  `added_by` int(11) NOT NULL,
+  `project_note` longtext,
+  `status` tinyint NOT NULL,
+  `added_by` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1708,13 +1758,13 @@ CREATE TABLE `ci_projects` (
 --
 
 CREATE TABLE `ci_projects_bugs` (
-  `project_bug_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `project_id` int(11) NOT NULL,
-  `employee_id` int(111) NOT NULL,
-  `bug_note` text DEFAULT NULL,
+  `project_bug_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `project_id` int NOT NULL,
+  `employee_id` int NOT NULL,
+  `bug_note` text,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1723,13 +1773,13 @@ CREATE TABLE `ci_projects_bugs` (
 --
 
 CREATE TABLE `ci_projects_discussion` (
-  `project_discussion_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `project_id` int(11) NOT NULL,
-  `employee_id` int(111) NOT NULL,
-  `discussion_text` text DEFAULT NULL,
+  `project_discussion_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `project_id` int NOT NULL,
+  `employee_id` int NOT NULL,
+  `discussion_text` text,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1738,14 +1788,14 @@ CREATE TABLE `ci_projects_discussion` (
 --
 
 CREATE TABLE `ci_projects_files` (
-  `project_file_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `project_id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
+  `project_file_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `project_id` int NOT NULL,
+  `employee_id` int NOT NULL,
   `file_title` varchar(255) NOT NULL,
   `attachment_file` mediumtext NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1754,13 +1804,13 @@ CREATE TABLE `ci_projects_files` (
 --
 
 CREATE TABLE `ci_projects_notes` (
-  `project_note_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `project_id` int(11) NOT NULL,
-  `employee_id` int(111) NOT NULL,
-  `project_note` text DEFAULT NULL,
+  `project_note_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `project_id` int NOT NULL,
+  `employee_id` int NOT NULL,
+  `project_note` text,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1769,10 +1819,10 @@ CREATE TABLE `ci_projects_notes` (
 --
 
 CREATE TABLE `ci_projects_timelogs` (
-  `timelogs_id` int(11) NOT NULL,
-  `project_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
+  `timelogs_id` int NOT NULL,
+  `project_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `employee_id` int NOT NULL,
   `start_time` varchar(255) NOT NULL,
   `end_time` varchar(255) NOT NULL,
   `start_date` varchar(255) NOT NULL,
@@ -1789,15 +1839,15 @@ CREATE TABLE `ci_projects_timelogs` (
 --
 
 CREATE TABLE `ci_recent_activity` (
-  `activity_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `staff_id` int(11) NOT NULL,
-  `module_id` int(11) NOT NULL,
+  `activity_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `staff_id` int NOT NULL,
+  `module_id` int NOT NULL,
   `module_type` varchar(200) NOT NULL,
-  `is_read` int(11) NOT NULL DEFAULT 0,
-  `added_by` int(11) NOT NULL,
+  `is_read` int NOT NULL DEFAULT '0',
+  `added_by` int NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1806,17 +1856,24 @@ CREATE TABLE `ci_recent_activity` (
 --
 
 CREATE TABLE `ci_rec_candidates` (
-  `candidate_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `job_id` int(111) NOT NULL,
-  `designation_id` int(11) NOT NULL,
-  `staff_id` int(11) NOT NULL,
+  `candidate_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `job_id` int NOT NULL,
+  `designation_id` int NOT NULL,
+  `staff_id` int NOT NULL,
   `message` mediumtext NOT NULL,
   `job_resume` mediumtext NOT NULL,
-  `application_status` int(11) NOT NULL DEFAULT 0,
+  `application_status` int NOT NULL DEFAULT '0',
   `application_remarks` mediumtext NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `ci_rec_candidates`
+--
+
+INSERT INTO `ci_rec_candidates` (`candidate_id`, `company_id`, `job_id`, `designation_id`, `staff_id`, `message`, `job_resume`, `application_status`, `application_remarks`, `created_at`) VALUES
+(1, 2, 1, 2, 2, 'test', 'server.png', 1, 'application remarks here', '03-01-2023 08:46:47');
 
 -- --------------------------------------------------------
 
@@ -1825,20 +1882,27 @@ CREATE TABLE `ci_rec_candidates` (
 --
 
 CREATE TABLE `ci_rec_interviews` (
-  `job_interview_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `job_id` int(111) NOT NULL,
-  `designation_id` int(11) NOT NULL,
+  `job_interview_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `job_id` int NOT NULL,
+  `designation_id` int NOT NULL,
   `staff_id` varchar(11) NOT NULL,
   `interview_place` varchar(255) NOT NULL,
   `interview_date` varchar(255) NOT NULL,
   `interview_time` varchar(255) NOT NULL,
-  `interviewer_id` int(11) NOT NULL,
+  `interviewer_id` int NOT NULL,
   `description` mediumtext NOT NULL,
-  `interview_remarks` text DEFAULT NULL,
-  `status` int(11) NOT NULL,
+  `interview_remarks` text,
+  `status` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `ci_rec_interviews`
+--
+
+INSERT INTO `ci_rec_interviews` (`job_interview_id`, `company_id`, `job_id`, `designation_id`, `staff_id`, `interview_place`, `interview_date`, `interview_time`, `interviewer_id`, `description`, `interview_remarks`, `status`, `created_at`) VALUES
+(1, 2, 1, 2, '2', 'online', '2023-01-04', '08:57', 4, 'percobaan', 'interview marks goes here', 2, '03-01-2023 08:58:21');
 
 -- --------------------------------------------------------
 
@@ -1847,20 +1911,20 @@ CREATE TABLE `ci_rec_interviews` (
 --
 
 CREATE TABLE `ci_rec_jobs` (
-  `job_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `job_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `job_title` varchar(255) NOT NULL,
-  `designation_id` int(111) NOT NULL,
-  `job_type` int(225) NOT NULL,
-  `job_vacancy` int(100) NOT NULL,
+  `designation_id` int NOT NULL,
+  `job_type` int NOT NULL,
+  `job_vacancy` int NOT NULL,
   `gender` varchar(100) NOT NULL,
   `minimum_experience` varchar(255) NOT NULL,
   `date_of_closing` varchar(200) NOT NULL,
   `short_description` mediumtext NOT NULL,
   `long_description` mediumtext NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1869,16 +1933,39 @@ CREATE TABLE `ci_rec_jobs` (
 --
 
 CREATE TABLE `ci_resignations` (
-  `resignation_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `employee_id` int(111) NOT NULL,
+  `resignation_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `employee_id` int NOT NULL,
   `notice_date` varchar(255) NOT NULL,
   `resignation_date` varchar(255) NOT NULL,
   `reason` mediumtext NOT NULL,
-  `added_by` int(111) NOT NULL,
-  `status` int(11) NOT NULL,
+  `added_by` int NOT NULL,
+  `status` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ci_sergeans`
+--
+
+CREATE TABLE `ci_sergeans` (
+  `sergeant_id` int NOT NULL,
+  `department_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `designation_id` int NOT NULL,
+  `sergeant_name` varchar(200) NOT NULL,
+  `description` text,
+  `created_at` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `ci_sergeans`
+--
+
+INSERT INTO `ci_sergeans` (`sergeant_id`, `department_id`, `company_id`, `designation_id`, `sergeant_name`, `description`, `created_at`) VALUES
+(1, 16, 2, 15, 'sergeant 1', NULL, '05-01-2023 04:33:11');
 
 -- --------------------------------------------------------
 
@@ -1887,11 +1974,11 @@ CREATE TABLE `ci_resignations` (
 --
 
 CREATE TABLE `ci_sms_template` (
-  `template_id` int(11) NOT NULL,
+  `template_id` int NOT NULL,
   `subject` varchar(255) DEFAULT NULL,
-  `message` text DEFAULT NULL,
+  `message` text,
   `created_at` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `ci_sms_template`
@@ -1912,13 +1999,22 @@ INSERT INTO `ci_sms_template` (`template_id`, `subject`, `message`, `created_at`
 --
 
 CREATE TABLE `ci_staff_roles` (
-  `role_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `role_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `role_name` varchar(200) NOT NULL,
   `role_access` varchar(200) NOT NULL,
   `role_resources` longtext NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `ci_staff_roles`
+--
+
+INSERT INTO `ci_staff_roles` (`role_id`, `company_id`, `role_name`, `role_access`, `role_resources`, `created_at`) VALUES
+(6, 2, 'Liutenant	', '1', '0,attendance,hr_projects,project1,project1,project2,project3,project4,project5,project6,project7,project8,project9,project10,project11,projects_calendar,projects_sboard,hr_tasks,task1,task1,task2,task3,task4,task5,task6,task7,task8,tasks_calendar,tasks_sboard,hr_payroll,pay1,pay1,pay2,pay3,pay_history,hradvance_salary,advance_salary1,advance_salary2,advance_salary3,advance_salary4,hrloan,loan1,loan2,loan3,loan4,hr_helpdesk,helpdesk1,helpdesk2,helpdesk3,helpdesk4,helpdesk5,helpdesk6,helpdesk7,helpdesk8,hr_training,training1,training2,training3,training4,training6,training5,training7,trainer1,trainer1,trainer2,trainer3,trainer4,training_skill1,training_skill1,training_skill2,training_skill3,training_skill4,training_calendar,hr_assets,asset1,asset1,asset2,asset3,asset4,asset_cat1,asset_cat1,asset_cat2,asset_cat3,asset_cat4,asset_brand1,asset_brand1,asset_brand2,asset_brand3,asset_brand4,hr_awards,award1,award1,award2,award3,award4,award_type1,award_type1,award_type2,award_type3,award_type4,hr_travel,travel1,travel1,travel2,travel3,travel4,travel5,travel_type1,travel_type1,travel_type2,travel_type3,travel_type4,travel_calendar,hr_leave,leave1,leave2,leave3,leave4,leave6,leave7,leave_calendar,leave_type1,leave_type1,leave_type2,leave_type3,leave_type4,overtime_req1,overtime_req1,overtime_req2,overtime_req3,overtime_req4,hr_complaints,complaint1,complaint2,complaint3,complaint4,hr_resignations,resignation1,resignation2,resignation3,resignation4,hr_disciplinary,disciplinary1,disciplinary1,disciplinary2,disciplinary3,disciplinary5,case_type1,case_type1,case_type2,case_type3,case_type4,hr_transfers,transfers1,transfers2,transfers3,transfers4,hr_settings,settings1,settings2,settings3,settings4,settings5,settings6,settings7,hr_inventory_control,warehouse1,warehouse1,warehouse2,warehouse3,warehouse4,product1,product1,product2,product3,product4,out_of_stock,expired_product,product_category1,product_category1,product_category2,product_category3,product_category4,supplier1,supplier1,supplier2,supplier3,supplier4,purchases1,purchases1,purchases2,purchases3,purchases4,purchases5,sales_order1,sales_order1,sales_order2,sales_order3,sales_order4,quote_order1,quote_order1,quote_order2,quote_order3,quote_order4,paid_orders,unpaid_orders,packed_orders,delivered_orders,cancelled_orders,custom_fields,hr_staff,staff2,staff2,staff3,staff4,staff5,shift1,shift1,shift2,shift3,shift4,staffexit1,staffexit1,staffexit2,staffexit3,staffexit4,exit_type1,exit_type1,exit_type2,exit_type3,exit_type4,hr_profile,hr_basic_info,hr_personal_info,hr_picture,account_info,hr_documents,change_password,hr_ats,ats2,ats2,ats3,ats4,ats5,candidate,interview,promotion,core_hr,news1,news1,news2,news3,news4,department1,department1,department2,department3,department4,designation1,designation1,designation2,designation3,designation4,policy1,policy1,policy2,policy3,policy4,policy5,org_chart,timesheet,upattendance1,upattendance1,upattendance2,upattendance3,upattendance4,monthly_time,hr_finance,accounts1,accounts1,accounts2,accounts3,accounts4,deposit1,deposit1,deposit2,deposit3,deposit4,expense1,expense1,expense2,expense3,expense4,transaction1,dep_cat1,dep_cat1,dep_cat2,dep_cat3,dep_cat4,exp_cat1,exp_cat1,exp_cat2,exp_cat3,exp_cat4,hr_talent,indicator1,indicator1,indicator2,indicator3,indicator4,appraisal1,appraisal1,appraisal2,appraisal3,appraisal4,competency1,competency1,competency2,competency3,competency4,tracking1,tracking1,tracking2,tracking3,tracking4,tracking5,track_type1,track_type1,track_type2,track_type3,track_type4,track_calendar,hr_clients,client1,client2,client3,client4,hr_leads,leads1,leads2,leads3,leads4,leads5,hr_invoices,invoice1,invoice2,invoice3,invoice4,invoice5,invoice_payments,invoice_calendar,tax_type1,tax_type1,tax_type2,tax_type3,tax_type4,estimate1,estimate2,estimate3,estimate4,estimate5,estimate6,estimate7,estimates_calendar,hr_events,hr_event1,hr_event1,hr_event2,hr_event3,hr_event4,events_calendar,hr_conference,conference1,conference1,conference2,conference3,conference4,conference_calendar,hr_holidays,holiday1,holiday1,holiday2,holiday3,holiday4,holidays_calendar,hr_visitors,visitor1,visitor2,visitor3,visitor4,hr_files,file1,file1,file2,file3,file4,officialfile1,officialfile1,officialfile2,officialfile3,officialfile4,todo_ist,system_calendar,system_reports', '05-01-2023 03:52:54'),
+(7, 2, 'Sergeant	', '1', '0,attendance,hr_projects,project1,project1,project2,project3,project4,project5,project6,project7,project8,project9,project10,project11,projects_calendar,projects_sboard,hr_tasks,task1,task1,task2,task3,task4,task5,task6,task7,task8,tasks_calendar,tasks_sboard,hr_payroll,pay1,pay1,pay2,pay3,pay_history,hradvance_salary,advance_salary1,advance_salary2,advance_salary3,advance_salary4,hrloan,loan1,loan2,loan3,loan4,hr_helpdesk,helpdesk1,helpdesk2,helpdesk3,helpdesk4,helpdesk5,helpdesk6,helpdesk7,helpdesk8,hr_training,training1,training2,training3,training4,training6,training5,training7,trainer1,trainer1,trainer2,trainer3,trainer4,training_skill1,training_skill1,training_skill2,training_skill3,training_skill4,training_calendar,hr_assets,asset1,asset1,asset2,asset3,asset4,asset_cat1,asset_cat1,asset_cat2,asset_cat3,asset_cat4,asset_brand1,asset_brand1,asset_brand2,asset_brand3,asset_brand4,hr_awards,award1,award1,award2,award3,award4,award_type1,award_type1,award_type2,award_type3,award_type4,hr_travel,travel1,travel1,travel2,travel3,travel4,travel5,travel_type1,travel_type1,travel_type2,travel_type3,travel_type4,travel_calendar,hr_leave,leave1,leave2,leave3,leave4,leave6,leave7,leave_calendar,leave_type1,leave_type1,leave_type2,leave_type3,leave_type4,overtime_req1,overtime_req1,overtime_req2,overtime_req3,overtime_req4,hr_complaints,complaint1,complaint2,complaint3,complaint4,hr_resignations,resignation1,resignation2,resignation3,resignation4,hr_disciplinary,disciplinary1,disciplinary1,disciplinary2,disciplinary3,disciplinary5,case_type1,case_type1,case_type2,case_type3,case_type4,hr_transfers,transfers1,transfers2,transfers3,transfers4,hr_settings,settings1,settings2,settings3,settings4,settings5,settings6,settings7,hr_inventory_control,warehouse1,warehouse1,warehouse2,warehouse3,warehouse4,product1,product1,product2,product3,product4,out_of_stock,expired_product,product_category1,product_category1,product_category2,product_category3,product_category4,supplier1,supplier1,supplier2,supplier3,supplier4,purchases1,purchases1,purchases2,purchases3,purchases4,purchases5,sales_order1,sales_order1,sales_order2,sales_order3,sales_order4,quote_order1,quote_order1,quote_order2,quote_order3,quote_order4,paid_orders,unpaid_orders,packed_orders,delivered_orders,cancelled_orders,custom_fields,hr_staff,staff2,staff2,staff3,staff4,staff5,shift1,shift1,shift2,shift3,shift4,staffexit1,staffexit1,staffexit2,staffexit3,staffexit4,exit_type1,exit_type1,exit_type2,exit_type3,exit_type4,hr_profile,hr_basic_info,hr_personal_info,hr_picture,account_info,hr_documents,change_password,hr_ats,ats2,ats2,ats3,ats4,ats5,candidate,interview,promotion,core_hr,news1,news1,news2,news3,news4,department1,department1,department2,department3,department4,designation1,designation1,designation2,designation3,designation4,policy1,policy1,policy2,policy3,policy4,policy5,org_chart,timesheet,upattendance1,upattendance1,upattendance2,upattendance3,upattendance4,monthly_time,hr_finance,accounts1,accounts1,accounts2,accounts3,accounts4,deposit1,deposit1,deposit2,deposit3,deposit4,expense1,expense1,expense2,expense3,expense4,transaction1,dep_cat1,dep_cat1,dep_cat2,dep_cat3,dep_cat4,exp_cat1,exp_cat1,exp_cat2,exp_cat3,exp_cat4,hr_talent,indicator1,indicator1,indicator2,indicator3,indicator4,appraisal1,appraisal1,appraisal2,appraisal3,appraisal4,competency1,competency1,competency2,competency3,competency4,tracking1,tracking1,tracking2,tracking3,tracking4,tracking5,track_type1,track_type1,track_type2,track_type3,track_type4,track_calendar,hr_clients,client1,client2,client3,client4,hr_leads,leads1,leads2,leads3,leads4,leads5,hr_invoices,invoice1,invoice2,invoice3,invoice4,invoice5,invoice_payments,invoice_calendar,tax_type1,tax_type1,tax_type2,tax_type3,tax_type4,estimate1,estimate2,estimate3,estimate4,estimate5,estimate6,estimate7,estimates_calendar,hr_events,hr_event1,hr_event1,hr_event2,hr_event3,hr_event4,events_calendar,hr_conference,conference1,conference1,conference2,conference3,conference4,conference_calendar,hr_holidays,holiday1,holiday1,holiday2,holiday3,holiday4,holidays_calendar,hr_visitors,visitor1,visitor2,visitor3,visitor4,hr_files,file1,file1,file2,file3,file4,officialfile1,officialfile1,officialfile2,officialfile3,officialfile4,todo_ist,system_calendar,system_reports', '05-01-2023 03:53:17'),
+(8, 2, 'Staff Sergeant', '1', '0,attendance,hr_projects,project1,project1,project2,project3,project4,project5,project6,project7,project8,project9,project10,project11,projects_calendar,projects_sboard,hr_tasks,task1,task1,task2,task3,task4,task5,task6,task7,task8,tasks_calendar,tasks_sboard,hr_payroll,pay1,pay1,pay2,pay3,pay_history,hradvance_salary,advance_salary1,advance_salary2,advance_salary3,advance_salary4,hrloan,loan1,loan2,loan3,loan4,hr_helpdesk,helpdesk1,helpdesk2,helpdesk3,helpdesk4,helpdesk5,helpdesk6,helpdesk7,helpdesk8,hr_training,training1,training2,training3,training4,training6,training5,training7,trainer1,trainer1,trainer2,trainer3,trainer4,training_skill1,training_skill1,training_skill2,training_skill3,training_skill4,training_calendar,hr_assets,asset1,asset1,asset2,asset3,asset4,asset_cat1,asset_cat1,asset_cat2,asset_cat3,asset_cat4,asset_brand1,asset_brand1,asset_brand2,asset_brand3,asset_brand4,hr_awards,award1,award1,award2,award3,award4,award_type1,award_type1,award_type2,award_type3,award_type4,hr_travel,travel1,travel1,travel2,travel3,travel4,travel5,travel_type1,travel_type1,travel_type2,travel_type3,travel_type4,travel_calendar,hr_leave,leave1,leave2,leave3,leave4,leave6,leave7,leave_calendar,leave_type1,leave_type1,leave_type2,leave_type3,leave_type4,overtime_req1,overtime_req1,overtime_req2,overtime_req3,overtime_req4,hr_complaints,complaint1,complaint2,complaint3,complaint4,hr_resignations,resignation1,resignation2,resignation3,resignation4,hr_disciplinary,disciplinary1,disciplinary1,disciplinary2,disciplinary3,disciplinary5,case_type1,case_type1,case_type2,case_type3,case_type4,hr_transfers,transfers1,transfers2,transfers3,transfers4,hr_settings,settings1,settings2,settings3,settings4,settings5,settings6,settings7,hr_inventory_control,warehouse1,warehouse1,warehouse2,warehouse3,warehouse4,product1,product1,product2,product3,product4,out_of_stock,expired_product,product_category1,product_category1,product_category2,product_category3,product_category4,supplier1,supplier1,supplier2,supplier3,supplier4,purchases1,purchases1,purchases2,purchases3,purchases4,purchases5,sales_order1,sales_order1,sales_order2,sales_order3,sales_order4,quote_order1,quote_order1,quote_order2,quote_order3,quote_order4,paid_orders,unpaid_orders,packed_orders,delivered_orders,cancelled_orders,custom_fields,hr_staff,staff2,staff2,staff3,staff4,staff5,shift1,shift1,shift2,shift3,shift4,staffexit1,staffexit1,staffexit2,staffexit3,staffexit4,exit_type1,exit_type1,exit_type2,exit_type3,exit_type4,hr_profile,hr_basic_info,hr_personal_info,hr_picture,account_info,hr_documents,change_password,hr_ats,ats2,ats2,ats3,ats4,ats5,candidate,interview,promotion,core_hr,news1,news1,news2,news3,news4,department1,department1,department2,department3,department4,designation1,designation1,designation2,designation3,designation4,policy1,policy1,policy2,policy3,policy4,policy5,org_chart,timesheet,upattendance1,upattendance1,upattendance2,upattendance3,upattendance4,monthly_time,hr_finance,accounts1,accounts1,accounts2,accounts3,accounts4,deposit1,deposit1,deposit2,deposit3,deposit4,expense1,expense1,expense2,expense3,expense4,transaction1,dep_cat1,dep_cat1,dep_cat2,dep_cat3,dep_cat4,exp_cat1,exp_cat1,exp_cat2,exp_cat3,exp_cat4,hr_talent,indicator1,indicator1,indicator2,indicator3,indicator4,appraisal1,appraisal1,appraisal2,appraisal3,appraisal4,competency1,competency1,competency2,competency3,competency4,tracking1,tracking1,tracking2,tracking3,tracking4,tracking5,track_type1,track_type1,track_type2,track_type3,track_type4,track_calendar,hr_clients,client1,client2,client3,client4,hr_leads,leads1,leads2,leads3,leads4,leads5,hr_invoices,invoice1,invoice2,invoice3,invoice4,invoice5,invoice_payments,invoice_calendar,tax_type1,tax_type1,tax_type2,tax_type3,tax_type4,estimate1,estimate2,estimate3,estimate4,estimate5,estimate6,estimate7,estimates_calendar,hr_events,hr_event1,hr_event1,hr_event2,hr_event3,hr_event4,events_calendar,hr_conference,conference1,conference1,conference2,conference3,conference4,conference_calendar,hr_holidays,holiday1,holiday1,holiday2,holiday3,holiday4,holidays_calendar,hr_visitors,visitor1,visitor2,visitor3,visitor4,hr_files,file1,file1,file2,file3,file4,officialfile1,officialfile1,officialfile2,officialfile3,officialfile4,todo_ist,system_calendar,system_reports', '05-01-2023 04:34:51');
 
 -- --------------------------------------------------------
 
@@ -1927,25 +2023,25 @@ CREATE TABLE `ci_staff_roles` (
 --
 
 CREATE TABLE `ci_stock_orders` (
-  `order_id` int(111) NOT NULL,
+  `order_id` int NOT NULL,
   `order_number` varchar(255) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `company_id` int NOT NULL,
+  `customer_id` int NOT NULL,
   `invoice_month` varchar(255) DEFAULT NULL,
   `invoice_date` varchar(255) NOT NULL,
   `invoice_due_date` varchar(255) NOT NULL,
-  `sub_total_amount` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `sub_total_amount` decimal(65,2) NOT NULL DEFAULT '0.00',
   `discount_type` varchar(11) NOT NULL,
-  `discount_figure` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `total_tax` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `discount_figure` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `total_tax` decimal(65,2) NOT NULL DEFAULT '0.00',
   `tax_type` varchar(100) DEFAULT NULL,
-  `total_discount` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `grand_total` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `total_discount` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `grand_total` decimal(65,2) NOT NULL DEFAULT '0.00',
   `invoice_note` mediumtext NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `payment_method` int(11) NOT NULL,
+  `payment_method` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1954,14 +2050,14 @@ CREATE TABLE `ci_stock_orders` (
 --
 
 CREATE TABLE `ci_stock_order_items` (
-  `order_item_id` int(111) NOT NULL,
-  `order_id` int(111) NOT NULL,
+  `order_item_id` int NOT NULL,
+  `order_id` int NOT NULL,
   `item_id` varchar(255) NOT NULL,
   `item_qty` varchar(255) NOT NULL,
-  `item_unit_price` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `item_sub_total` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `item_unit_price` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `item_sub_total` decimal(65,2) NOT NULL DEFAULT '0.00',
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1970,25 +2066,25 @@ CREATE TABLE `ci_stock_order_items` (
 --
 
 CREATE TABLE `ci_stock_order_quotes` (
-  `quote_id` int(111) NOT NULL,
+  `quote_id` int NOT NULL,
   `quote_number` varchar(255) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `company_id` int NOT NULL,
+  `customer_id` int NOT NULL,
   `quote_month` varchar(255) DEFAULT NULL,
   `quote_date` varchar(255) NOT NULL,
   `quote_due_date` varchar(255) NOT NULL,
-  `sub_total_amount` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `sub_total_amount` decimal(65,2) NOT NULL DEFAULT '0.00',
   `discount_type` varchar(11) NOT NULL,
-  `discount_figure` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `total_tax` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `discount_figure` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `total_tax` decimal(65,2) NOT NULL DEFAULT '0.00',
   `tax_type` varchar(100) DEFAULT NULL,
-  `total_discount` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `grand_total` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `total_discount` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `grand_total` decimal(65,2) NOT NULL DEFAULT '0.00',
   `quote_note` mediumtext NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `payment_method` int(11) NOT NULL,
+  `payment_method` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1997,14 +2093,14 @@ CREATE TABLE `ci_stock_order_quotes` (
 --
 
 CREATE TABLE `ci_stock_order_quote_items` (
-  `quote_item_id` int(111) NOT NULL,
-  `quote_id` int(111) NOT NULL,
+  `quote_item_id` int NOT NULL,
+  `quote_id` int NOT NULL,
   `item_id` varchar(255) NOT NULL,
   `item_qty` varchar(255) NOT NULL,
-  `item_unit_price` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `item_sub_total` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `item_unit_price` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `item_sub_total` decimal(65,2) NOT NULL DEFAULT '0.00',
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2013,27 +2109,27 @@ CREATE TABLE `ci_stock_order_quote_items` (
 --
 
 CREATE TABLE `ci_stock_products` (
-  `product_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `product_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `product_name` varchar(255) DEFAULT NULL,
-  `product_qty` int(11) NOT NULL,
-  `reorder_stock` int(11) NOT NULL,
+  `product_qty` int NOT NULL,
+  `reorder_stock` int NOT NULL,
   `barcode` varchar(255) DEFAULT NULL,
   `barcode_type` varchar(255) DEFAULT NULL,
-  `warehouse_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
+  `warehouse_id` int NOT NULL,
+  `category_id` int NOT NULL,
   `product_sku` varchar(255) DEFAULT NULL,
   `product_serial_number` varchar(255) DEFAULT NULL,
   `purchase_price` decimal(65,2) NOT NULL,
   `retail_price` decimal(65,2) NOT NULL,
   `expiration_date` varchar(255) DEFAULT NULL,
   `product_image` varchar(255) DEFAULT NULL,
-  `product_description` longtext DEFAULT NULL,
-  `product_rating` int(11) NOT NULL,
-  `added_by` int(11) NOT NULL,
+  `product_description` longtext,
+  `product_rating` int NOT NULL,
+  `added_by` int NOT NULL,
   `created_at` varchar(255) DEFAULT NULL,
   `status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2042,24 +2138,24 @@ CREATE TABLE `ci_stock_products` (
 --
 
 CREATE TABLE `ci_stock_purchases` (
-  `purchase_id` int(111) NOT NULL,
+  `purchase_id` int NOT NULL,
   `purchase_number` varchar(255) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `supplier_id` int(11) NOT NULL,
+  `company_id` int NOT NULL,
+  `supplier_id` int NOT NULL,
   `purchase_month` varchar(255) DEFAULT NULL,
   `purchase_date` varchar(255) NOT NULL,
-  `sub_total_amount` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `sub_total_amount` decimal(65,2) NOT NULL DEFAULT '0.00',
   `discount_type` varchar(11) NOT NULL,
-  `discount_figure` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `total_tax` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `discount_figure` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `total_tax` decimal(65,2) NOT NULL DEFAULT '0.00',
   `tax_type` varchar(100) DEFAULT NULL,
-  `total_discount` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `grand_total` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `total_discount` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `grand_total` decimal(65,2) NOT NULL DEFAULT '0.00',
   `purchase_note` mediumtext NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `payment_method` int(11) NOT NULL,
+  `payment_method` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2068,14 +2164,14 @@ CREATE TABLE `ci_stock_purchases` (
 --
 
 CREATE TABLE `ci_stock_purchase_items` (
-  `purchase_item_id` int(111) NOT NULL,
-  `purchase_id` int(111) NOT NULL,
-  `item_id` int(11) NOT NULL,
+  `purchase_item_id` int NOT NULL,
+  `purchase_id` int NOT NULL,
+  `item_id` int NOT NULL,
   `item_qty` varchar(255) NOT NULL,
-  `item_unit_price` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `item_sub_total` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `item_unit_price` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `item_sub_total` decimal(65,2) NOT NULL DEFAULT '0.00',
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2084,21 +2180,21 @@ CREATE TABLE `ci_stock_purchase_items` (
 --
 
 CREATE TABLE `ci_stock_suppliers` (
-  `supplier_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `supplier_name` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `registration_no` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `contact_number` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `supplier_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `supplier_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `registration_no` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `contact_number` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `website_url` varchar(255) DEFAULT NULL,
-  `address_1` text CHARACTER SET utf8 DEFAULT NULL,
-  `address_2` text CHARACTER SET utf8 DEFAULT NULL,
-  `city` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `state` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `zipcode` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `country` int(111) NOT NULL,
-  `added_by` int(111) NOT NULL,
-  `created_at` varchar(255) CHARACTER SET utf8 NOT NULL
+  `address_1` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci,
+  `address_2` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci,
+  `city` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `state` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `zipcode` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `country` int NOT NULL,
+  `added_by` int NOT NULL,
+  `created_at` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -2108,21 +2204,21 @@ CREATE TABLE `ci_stock_suppliers` (
 --
 
 CREATE TABLE `ci_stock_warehouses` (
-  `warehouse_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `warehouse_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `warehouse_name` varchar(200) DEFAULT NULL,
   `contact_number` varchar(255) DEFAULT NULL,
   `pickup_location` tinyint(1) NOT NULL,
-  `address_1` text DEFAULT NULL,
-  `address_2` text DEFAULT NULL,
+  `address_1` text,
+  `address_2` text,
   `city` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL,
   `zipcode` varchar(255) DEFAULT NULL,
-  `country` int(111) NOT NULL,
-  `added_by` int(111) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `country` int NOT NULL,
+  `added_by` int NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2131,19 +2227,19 @@ CREATE TABLE `ci_stock_warehouses` (
 --
 
 CREATE TABLE `ci_support_tickets` (
-  `ticket_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `ticket_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `ticket_code` varchar(200) NOT NULL,
   `subject` varchar(255) NOT NULL,
-  `employee_id` int(111) NOT NULL,
+  `employee_id` int NOT NULL,
   `ticket_priority` varchar(255) NOT NULL,
-  `department_id` int(111) NOT NULL,
+  `department_id` int NOT NULL,
   `description` mediumtext NOT NULL,
-  `ticket_remarks` mediumtext DEFAULT NULL,
+  `ticket_remarks` mediumtext,
   `ticket_status` varchar(200) NOT NULL,
-  `created_by` int(11) NOT NULL,
+  `created_by` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2152,14 +2248,14 @@ CREATE TABLE `ci_support_tickets` (
 --
 
 CREATE TABLE `ci_support_ticket_files` (
-  `ticket_file_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `ticket_id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
+  `ticket_file_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `ticket_id` int NOT NULL,
+  `employee_id` int NOT NULL,
   `file_title` varchar(255) NOT NULL,
   `attachment_file` mediumtext NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2168,13 +2264,13 @@ CREATE TABLE `ci_support_ticket_files` (
 --
 
 CREATE TABLE `ci_support_ticket_notes` (
-  `ticket_note_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `ticket_id` int(111) NOT NULL,
-  `employee_id` int(111) NOT NULL,
-  `ticket_note` text DEFAULT NULL,
+  `ticket_note_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `ticket_id` int NOT NULL,
+  `employee_id` int NOT NULL,
+  `ticket_note` text,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2183,14 +2279,14 @@ CREATE TABLE `ci_support_ticket_notes` (
 --
 
 CREATE TABLE `ci_support_ticket_reply` (
-  `ticket_reply_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `ticket_id` int(111) NOT NULL,
-  `sent_by` int(11) NOT NULL,
-  `assign_to` int(11) NOT NULL,
-  `reply_text` text DEFAULT NULL,
+  `ticket_reply_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `ticket_id` int NOT NULL,
+  `sent_by` int NOT NULL,
+  `assign_to` int NOT NULL,
+  `reply_text` text,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2199,14 +2295,14 @@ CREATE TABLE `ci_support_ticket_reply` (
 --
 
 CREATE TABLE `ci_system_documents` (
-  `document_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `department_id` int(11) NOT NULL,
+  `document_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `department_id` int NOT NULL,
   `document_name` varchar(255) NOT NULL,
   `document_type` varchar(255) NOT NULL,
   `document_file` varchar(255) NOT NULL,
   `created_at` varchar(200) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2215,23 +2311,23 @@ CREATE TABLE `ci_system_documents` (
 --
 
 CREATE TABLE `ci_tasks` (
-  `task_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `project_id` int(111) NOT NULL,
+  `task_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `project_id` int NOT NULL,
   `task_name` varchar(255) NOT NULL,
   `assigned_to` varchar(255) DEFAULT NULL,
-  `associated_goals` text DEFAULT NULL,
+  `associated_goals` text,
   `start_date` varchar(200) NOT NULL,
   `end_date` varchar(200) NOT NULL,
   `task_hour` varchar(200) DEFAULT NULL,
   `task_progress` varchar(200) DEFAULT NULL,
   `summary` text NOT NULL,
-  `description` mediumtext DEFAULT NULL,
-  `task_status` int(5) NOT NULL,
-  `task_note` mediumtext DEFAULT NULL,
-  `created_by` int(11) NOT NULL,
+  `description` mediumtext,
+  `task_status` int NOT NULL,
+  `task_note` mediumtext,
+  `created_by` int NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2240,13 +2336,13 @@ CREATE TABLE `ci_tasks` (
 --
 
 CREATE TABLE `ci_tasks_discussion` (
-  `task_discussion_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `task_id` int(11) NOT NULL,
-  `employee_id` int(111) NOT NULL,
-  `discussion_text` text DEFAULT NULL,
+  `task_discussion_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `task_id` int NOT NULL,
+  `employee_id` int NOT NULL,
+  `discussion_text` text,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2255,14 +2351,14 @@ CREATE TABLE `ci_tasks_discussion` (
 --
 
 CREATE TABLE `ci_tasks_files` (
-  `task_file_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `task_id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
+  `task_file_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `task_id` int NOT NULL,
+  `employee_id` int NOT NULL,
   `file_title` varchar(255) NOT NULL,
   `attachment_file` mediumtext NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2271,13 +2367,30 @@ CREATE TABLE `ci_tasks_files` (
 --
 
 CREATE TABLE `ci_tasks_notes` (
-  `task_note_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `task_id` int(111) NOT NULL,
-  `employee_id` int(111) NOT NULL,
-  `task_note` text DEFAULT NULL,
+  `task_note_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `task_id` int NOT NULL,
+  `employee_id` int NOT NULL,
+  `task_note` text,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ci_teams`
+--
+
+CREATE TABLE `ci_teams` (
+  `team_id` int DEFAULT NULL,
+  `department_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `designation_id` int NOT NULL,
+  `sergeant_id` int NOT NULL,
+  `team_name` varchar(200) NOT NULL,
+  `description` text NOT NULL,
+  `created_at` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2286,9 +2399,9 @@ CREATE TABLE `ci_tasks_notes` (
 --
 
 CREATE TABLE `ci_timesheet` (
-  `time_attendance_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `employee_id` int(111) NOT NULL,
+  `time_attendance_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `employee_id` int NOT NULL,
   `attendance_date` varchar(255) NOT NULL,
   `clock_in` varchar(255) NOT NULL,
   `clock_in_ip_address` varchar(255) NOT NULL,
@@ -2305,7 +2418,7 @@ CREATE TABLE `ci_timesheet` (
   `total_work` varchar(255) NOT NULL,
   `total_rest` varchar(255) NOT NULL,
   `attendance_status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2314,9 +2427,9 @@ CREATE TABLE `ci_timesheet` (
 --
 
 CREATE TABLE `ci_timesheet_request` (
-  `time_request_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `staff_id` int(11) NOT NULL,
+  `time_request_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `staff_id` int NOT NULL,
   `request_date` varchar(255) NOT NULL,
   `request_month` varchar(255) NOT NULL,
   `clock_in` varchar(200) NOT NULL,
@@ -2325,7 +2438,15 @@ CREATE TABLE `ci_timesheet_request` (
   `request_reason` mediumtext NOT NULL,
   `is_approved` tinyint(1) NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `ci_timesheet_request`
+--
+
+INSERT INTO `ci_timesheet_request` (`time_request_id`, `company_id`, `staff_id`, `request_date`, `request_month`, `clock_in`, `clock_out`, `total_hours`, `request_reason`, `is_approved`, `created_at`) VALUES
+(1, 2, 4, '2023-01-03', '2023-01', '2023-01-03 14:20:00', '2023-01-03 16:15:00', '1:55', 'test1', 0, '03-01-2023 03:33:36'),
+(2, 2, 5, '2023-01-04', '2023-01', '2023-01-04 05:06:00', '2023-01-04 07:07:00', '2:1', 'lembur 1', 1, '03-01-2023 09:07:19');
 
 -- --------------------------------------------------------
 
@@ -2334,13 +2455,13 @@ CREATE TABLE `ci_timesheet_request` (
 --
 
 CREATE TABLE `ci_todo_items` (
-  `todo_item_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `description` mediumtext DEFAULT NULL,
-  `is_done` int(11) NOT NULL,
+  `todo_item_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `description` mediumtext,
+  `is_done` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2349,20 +2470,27 @@ CREATE TABLE `ci_todo_items` (
 --
 
 CREATE TABLE `ci_track_goals` (
-  `tracking_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `tracking_type_id` int(200) NOT NULL,
+  `tracking_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `tracking_type_id` int NOT NULL,
   `start_date` varchar(200) NOT NULL,
   `end_date` varchar(200) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `target_achiement` varchar(255) NOT NULL,
-  `description` mediumtext DEFAULT NULL,
-  `goal_work` text DEFAULT NULL,
+  `description` mediumtext,
+  `goal_work` text,
   `goal_progress` varchar(200) DEFAULT NULL,
-  `goal_status` int(11) NOT NULL DEFAULT 0,
-  `goal_rating` int(11) NOT NULL,
+  `goal_status` int NOT NULL DEFAULT '0',
+  `goal_rating` int NOT NULL,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `ci_track_goals`
+--
+
+INSERT INTO `ci_track_goals` (`tracking_id`, `company_id`, `tracking_type_id`, `start_date`, `end_date`, `subject`, `target_achiement`, `description`, `goal_work`, `goal_progress`, `goal_status`, `goal_rating`, `created_at`) VALUES
+(1, 2, 167, '2023-01-20', '2023-01-27', 'MEMBUAT CRYSTAL REPORT', 'CRYSTAL REPORT', '3 ORANG', NULL, '', 0, 5, '22-12-2022 09:58:44');
 
 -- --------------------------------------------------------
 
@@ -2371,8 +2499,8 @@ CREATE TABLE `ci_track_goals` (
 --
 
 CREATE TABLE `ci_trainers` (
-  `trainer_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `trainer_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `contact_number` varchar(255) NOT NULL,
@@ -2380,7 +2508,7 @@ CREATE TABLE `ci_trainers` (
   `expertise` mediumtext NOT NULL,
   `address` mediumtext NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2389,21 +2517,21 @@ CREATE TABLE `ci_trainers` (
 --
 
 CREATE TABLE `ci_training` (
-  `training_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
+  `training_id` int NOT NULL,
+  `company_id` int NOT NULL,
   `employee_id` varchar(200) NOT NULL,
-  `training_type_id` int(200) NOT NULL,
-  `associated_goals` text DEFAULT NULL,
-  `trainer_id` int(200) NOT NULL,
+  `training_type_id` int NOT NULL,
+  `associated_goals` text,
+  `trainer_id` int NOT NULL,
   `start_date` varchar(200) NOT NULL,
   `finish_date` varchar(200) NOT NULL,
   `training_cost` decimal(65,2) DEFAULT NULL,
-  `training_status` int(200) DEFAULT NULL,
-  `description` mediumtext DEFAULT NULL,
+  `training_status` int DEFAULT NULL,
+  `description` mediumtext,
   `performance` varchar(200) DEFAULT NULL,
-  `remarks` mediumtext DEFAULT NULL,
+  `remarks` mediumtext,
   `created_at` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2412,13 +2540,13 @@ CREATE TABLE `ci_training` (
 --
 
 CREATE TABLE `ci_training_notes` (
-  `training_note_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `training_id` int(11) NOT NULL,
-  `employee_id` int(111) NOT NULL,
-  `training_note` text DEFAULT NULL,
+  `training_note_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `training_id` int NOT NULL,
+  `employee_id` int NOT NULL,
+  `training_note` text,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2427,17 +2555,17 @@ CREATE TABLE `ci_training_notes` (
 --
 
 CREATE TABLE `ci_transfers` (
-  `transfer_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `employee_id` int(111) NOT NULL,
+  `transfer_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `employee_id` int NOT NULL,
   `transfer_date` varchar(255) NOT NULL,
-  `transfer_department` int(111) NOT NULL,
-  `transfer_designation` int(11) NOT NULL,
+  `transfer_department` int NOT NULL,
+  `transfer_designation` int NOT NULL,
   `reason` mediumtext NOT NULL,
-  `status` tinyint(2) NOT NULL,
-  `added_by` int(111) NOT NULL,
+  `status` tinyint NOT NULL,
+  `added_by` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2446,23 +2574,23 @@ CREATE TABLE `ci_transfers` (
 --
 
 CREATE TABLE `ci_travels` (
-  `travel_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `employee_id` int(111) NOT NULL,
+  `travel_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `employee_id` int NOT NULL,
   `start_date` varchar(255) NOT NULL,
   `end_date` varchar(255) NOT NULL,
-  `associated_goals` text DEFAULT NULL,
+  `associated_goals` text,
   `visit_purpose` varchar(255) NOT NULL,
   `visit_place` varchar(255) NOT NULL,
-  `travel_mode` int(111) DEFAULT NULL,
-  `arrangement_type` int(111) DEFAULT NULL,
-  `expected_budget` decimal(65,2) NOT NULL DEFAULT 0.00,
-  `actual_budget` decimal(65,2) NOT NULL DEFAULT 0.00,
+  `travel_mode` int DEFAULT NULL,
+  `arrangement_type` int DEFAULT NULL,
+  `expected_budget` decimal(65,2) NOT NULL DEFAULT '0.00',
+  `actual_budget` decimal(65,2) NOT NULL DEFAULT '0.00',
   `description` mediumtext NOT NULL,
-  `status` tinyint(2) NOT NULL,
-  `added_by` int(111) NOT NULL,
+  `status` tinyint NOT NULL,
+  `added_by` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2471,14 +2599,14 @@ CREATE TABLE `ci_travels` (
 --
 
 CREATE TABLE `ci_users_documents` (
-  `document_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `document_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `user_id` int NOT NULL,
   `document_name` varchar(255) NOT NULL,
   `document_type` varchar(255) NOT NULL,
   `document_file` varchar(255) NOT NULL,
   `created_at` varchar(200) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2487,9 +2615,9 @@ CREATE TABLE `ci_users_documents` (
 --
 
 CREATE TABLE `ci_visitors` (
-  `visitor_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `department_id` int(11) NOT NULL,
+  `visitor_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `department_id` int NOT NULL,
   `visit_purpose` varchar(255) DEFAULT NULL,
   `visitor_name` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
@@ -2497,11 +2625,11 @@ CREATE TABLE `ci_visitors` (
   `visit_date` varchar(255) DEFAULT NULL,
   `check_in` varchar(255) DEFAULT NULL,
   `check_out` varchar(255) DEFAULT NULL,
-  `address` mediumtext DEFAULT NULL,
-  `description` mediumtext DEFAULT NULL,
-  `created_by` int(11) NOT NULL,
+  `address` mediumtext,
+  `description` mediumtext,
+  `created_by` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2510,17 +2638,24 @@ CREATE TABLE `ci_visitors` (
 --
 
 CREATE TABLE `ci_warnings` (
-  `warning_id` int(111) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `warning_to` int(111) NOT NULL,
-  `warning_by` int(111) NOT NULL,
+  `warning_id` int NOT NULL,
+  `company_id` int NOT NULL,
+  `warning_to` int NOT NULL,
+  `warning_by` int NOT NULL,
   `warning_date` varchar(255) NOT NULL,
-  `warning_type_id` int(111) NOT NULL,
+  `warning_type_id` int NOT NULL,
   `attachment` varchar(255) DEFAULT NULL,
   `subject` varchar(255) NOT NULL,
   `description` mediumtext NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `ci_warnings`
+--
+
+INSERT INTO `ci_warnings` (`warning_id`, `company_id`, `warning_to`, `warning_by`, `warning_date`, `warning_type_id`, `attachment`, `subject`, `description`, `created_at`) VALUES
+(1, 2, 4, 5, '2023-01-04', 139, 'spl 1.png', 'case 1', 'case 1', '03-01-2023 09:13:51');
 
 --
 -- Indexes for dumped tables
@@ -2905,6 +3040,12 @@ ALTER TABLE `ci_resignations`
   ADD PRIMARY KEY (`resignation_id`);
 
 --
+-- Indexes for table `ci_sergeans`
+--
+ALTER TABLE `ci_sergeans`
+  ADD PRIMARY KEY (`sergeant_id`);
+
+--
 -- Indexes for table `ci_staff_roles`
 --
 ALTER TABLE `ci_staff_roles`
@@ -3098,565 +3239,571 @@ ALTER TABLE `ci_warnings`
 -- AUTO_INCREMENT for table `ci_advance_salary`
 --
 ALTER TABLE `ci_advance_salary`
-  MODIFY `advance_salary_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `advance_salary_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_announcements`
 --
 ALTER TABLE `ci_announcements`
-  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `announcement_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ci_assets`
 --
 ALTER TABLE `ci_assets`
-  MODIFY `assets_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `assets_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_awards`
 --
 ALTER TABLE `ci_awards`
-  MODIFY `award_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `award_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_company_membership`
 --
 ALTER TABLE `ci_company_membership`
-  MODIFY `company_membership_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `company_membership_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ci_complaints`
 --
 ALTER TABLE `ci_complaints`
-  MODIFY `complaint_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `complaint_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_contract_options`
 --
 ALTER TABLE `ci_contract_options`
-  MODIFY `contract_option_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `contract_option_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_countries`
 --
 ALTER TABLE `ci_countries`
-  MODIFY `country_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
+  MODIFY `country_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
 
 --
 -- AUTO_INCREMENT for table `ci_currencies`
 --
 ALTER TABLE `ci_currencies`
-  MODIFY `currency_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=252;
+  MODIFY `currency_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=252;
 
 --
 -- AUTO_INCREMENT for table `ci_database_backup`
 --
 ALTER TABLE `ci_database_backup`
-  MODIFY `backup_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `backup_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_departments`
 --
 ALTER TABLE `ci_departments`
-  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `department_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `ci_designations`
 --
 ALTER TABLE `ci_designations`
-  MODIFY `designation_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `designation_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `ci_email_template`
 --
 ALTER TABLE `ci_email_template`
-  MODIFY `template_id` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `template_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `ci_employee_contacts`
 --
 ALTER TABLE `ci_employee_contacts`
-  MODIFY `contact_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `contact_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_employee_exit`
 --
 ALTER TABLE `ci_employee_exit`
-  MODIFY `exit_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `exit_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ci_erp_company_settings`
 --
 ALTER TABLE `ci_erp_company_settings`
-  MODIFY `setting_id` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `setting_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ci_erp_constants`
 --
 ALTER TABLE `ci_erp_constants`
-  MODIFY `constants_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `constants_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
 
 --
 -- AUTO_INCREMENT for table `ci_erp_settings`
 --
 ALTER TABLE `ci_erp_settings`
-  MODIFY `setting_id` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `setting_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ci_erp_users`
 --
 ALTER TABLE `ci_erp_users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `ci_erp_users_details`
 --
 ALTER TABLE `ci_erp_users_details`
-  MODIFY `staff_details_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `staff_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `ci_erp_users_role`
 --
 ALTER TABLE `ci_erp_users_role`
-  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `role_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_estimates`
 --
 ALTER TABLE `ci_estimates`
-  MODIFY `estimate_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `estimate_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_estimates_items`
 --
 ALTER TABLE `ci_estimates_items`
-  MODIFY `estimate_item_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `estimate_item_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_events`
 --
 ALTER TABLE `ci_events`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `event_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_finance_accounts`
 --
 ALTER TABLE `ci_finance_accounts`
-  MODIFY `account_id` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `account_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_finance_entity`
 --
 ALTER TABLE `ci_finance_entity`
-  MODIFY `entity_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `entity_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_finance_membership_invoices`
 --
 ALTER TABLE `ci_finance_membership_invoices`
-  MODIFY `membership_invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `membership_invoice_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ci_finance_transactions`
 --
 ALTER TABLE `ci_finance_transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `transaction_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_holidays`
 --
 ALTER TABLE `ci_holidays`
-  MODIFY `holiday_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `holiday_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_invoices`
 --
 ALTER TABLE `ci_invoices`
-  MODIFY `invoice_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `invoice_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_invoices_items`
 --
 ALTER TABLE `ci_invoices_items`
-  MODIFY `invoice_item_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `invoice_item_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_languages`
 --
 ALTER TABLE `ci_languages`
-  MODIFY `language_id` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `language_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `ci_leads`
 --
 ALTER TABLE `ci_leads`
-  MODIFY `lead_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `lead_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ci_leads_followup`
 --
 ALTER TABLE `ci_leads_followup`
-  MODIFY `followup_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `followup_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_leave_applications`
 --
 ALTER TABLE `ci_leave_applications`
-  MODIFY `leave_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `leave_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_meetings`
 --
 ALTER TABLE `ci_meetings`
-  MODIFY `meeting_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `meeting_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_membership`
 --
 ALTER TABLE `ci_membership`
-  MODIFY `membership_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `membership_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `ci_module_attributes`
 --
 ALTER TABLE `ci_module_attributes`
-  MODIFY `custom_field_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `custom_field_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_module_attributes_select_value`
 --
 ALTER TABLE `ci_module_attributes_select_value`
-  MODIFY `attributes_select_value_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `attributes_select_value_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_module_attributes_values`
 --
 ALTER TABLE `ci_module_attributes_values`
-  MODIFY `attributes_value_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `attributes_value_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_office_shifts`
 --
 ALTER TABLE `ci_office_shifts`
-  MODIFY `office_shift_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `office_shift_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ci_official_documents`
 --
 ALTER TABLE `ci_official_documents`
-  MODIFY `document_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `document_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_payslips`
 --
 ALTER TABLE `ci_payslips`
-  MODIFY `payslip_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `payslip_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_payslip_allowances`
 --
 ALTER TABLE `ci_payslip_allowances`
-  MODIFY `payslip_allowances_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `payslip_allowances_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_payslip_commissions`
 --
 ALTER TABLE `ci_payslip_commissions`
-  MODIFY `payslip_commissions_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `payslip_commissions_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_payslip_other_payments`
 --
 ALTER TABLE `ci_payslip_other_payments`
-  MODIFY `payslip_other_payment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `payslip_other_payment_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_payslip_statutory_deductions`
 --
 ALTER TABLE `ci_payslip_statutory_deductions`
-  MODIFY `payslip_deduction_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `payslip_deduction_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_performance_appraisal`
 --
 ALTER TABLE `ci_performance_appraisal`
-  MODIFY `performance_appraisal_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `performance_appraisal_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_performance_appraisal_options`
 --
 ALTER TABLE `ci_performance_appraisal_options`
-  MODIFY `performance_appraisal_options_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `performance_appraisal_options_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_performance_indicator`
 --
 ALTER TABLE `ci_performance_indicator`
-  MODIFY `performance_indicator_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `performance_indicator_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_performance_indicator_options`
 --
 ALTER TABLE `ci_performance_indicator_options`
-  MODIFY `performance_indicator_options_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `performance_indicator_options_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_policies`
 --
 ALTER TABLE `ci_policies`
-  MODIFY `policy_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `policy_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ci_projects`
 --
 ALTER TABLE `ci_projects`
-  MODIFY `project_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `project_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_projects_bugs`
 --
 ALTER TABLE `ci_projects_bugs`
-  MODIFY `project_bug_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `project_bug_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_projects_discussion`
 --
 ALTER TABLE `ci_projects_discussion`
-  MODIFY `project_discussion_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `project_discussion_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_projects_files`
 --
 ALTER TABLE `ci_projects_files`
-  MODIFY `project_file_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `project_file_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_projects_notes`
 --
 ALTER TABLE `ci_projects_notes`
-  MODIFY `project_note_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `project_note_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_projects_timelogs`
 --
 ALTER TABLE `ci_projects_timelogs`
-  MODIFY `timelogs_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `timelogs_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_recent_activity`
 --
 ALTER TABLE `ci_recent_activity`
-  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `activity_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_rec_candidates`
 --
 ALTER TABLE `ci_rec_candidates`
-  MODIFY `candidate_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `candidate_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ci_rec_interviews`
 --
 ALTER TABLE `ci_rec_interviews`
-  MODIFY `job_interview_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `job_interview_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ci_rec_jobs`
 --
 ALTER TABLE `ci_rec_jobs`
-  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `job_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ci_resignations`
 --
 ALTER TABLE `ci_resignations`
-  MODIFY `resignation_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `resignation_id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ci_sergeans`
+--
+ALTER TABLE `ci_sergeans`
+  MODIFY `sergeant_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ci_staff_roles`
 --
 ALTER TABLE `ci_staff_roles`
-  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `role_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `ci_stock_orders`
 --
 ALTER TABLE `ci_stock_orders`
-  MODIFY `order_id` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `ci_stock_order_items`
 --
 ALTER TABLE `ci_stock_order_items`
-  MODIFY `order_item_id` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `order_item_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `ci_stock_order_quotes`
 --
 ALTER TABLE `ci_stock_order_quotes`
-  MODIFY `quote_id` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `quote_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ci_stock_order_quote_items`
 --
 ALTER TABLE `ci_stock_order_quote_items`
-  MODIFY `quote_item_id` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `quote_item_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `ci_stock_products`
 --
 ALTER TABLE `ci_stock_products`
-  MODIFY `product_id` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `ci_stock_purchases`
 --
 ALTER TABLE `ci_stock_purchases`
-  MODIFY `purchase_id` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `ci_stock_purchase_items`
 --
 ALTER TABLE `ci_stock_purchase_items`
-  MODIFY `purchase_item_id` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `purchase_item_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `ci_stock_suppliers`
 --
 ALTER TABLE `ci_stock_suppliers`
-  MODIFY `supplier_id` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `supplier_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ci_stock_warehouses`
 --
 ALTER TABLE `ci_stock_warehouses`
-  MODIFY `warehouse_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `warehouse_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `ci_support_tickets`
 --
 ALTER TABLE `ci_support_tickets`
-  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ticket_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_support_ticket_files`
 --
 ALTER TABLE `ci_support_ticket_files`
-  MODIFY `ticket_file_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ticket_file_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_support_ticket_notes`
 --
 ALTER TABLE `ci_support_ticket_notes`
-  MODIFY `ticket_note_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ticket_note_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_support_ticket_reply`
 --
 ALTER TABLE `ci_support_ticket_reply`
-  MODIFY `ticket_reply_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `ticket_reply_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_system_documents`
 --
 ALTER TABLE `ci_system_documents`
-  MODIFY `document_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `document_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_tasks`
 --
 ALTER TABLE `ci_tasks`
-  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `task_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_tasks_discussion`
 --
 ALTER TABLE `ci_tasks_discussion`
-  MODIFY `task_discussion_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `task_discussion_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_tasks_files`
 --
 ALTER TABLE `ci_tasks_files`
-  MODIFY `task_file_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `task_file_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_tasks_notes`
 --
 ALTER TABLE `ci_tasks_notes`
-  MODIFY `task_note_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `task_note_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_timesheet`
 --
 ALTER TABLE `ci_timesheet`
-  MODIFY `time_attendance_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `time_attendance_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ci_timesheet_request`
 --
 ALTER TABLE `ci_timesheet_request`
-  MODIFY `time_request_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `time_request_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `ci_todo_items`
 --
 ALTER TABLE `ci_todo_items`
-  MODIFY `todo_item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `todo_item_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_track_goals`
 --
 ALTER TABLE `ci_track_goals`
-  MODIFY `tracking_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tracking_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ci_trainers`
 --
 ALTER TABLE `ci_trainers`
-  MODIFY `trainer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `trainer_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_training`
 --
 ALTER TABLE `ci_training`
-  MODIFY `training_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `training_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_training_notes`
 --
 ALTER TABLE `ci_training_notes`
-  MODIFY `training_note_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `training_note_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_transfers`
 --
 ALTER TABLE `ci_transfers`
-  MODIFY `transfer_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `transfer_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_travels`
 --
 ALTER TABLE `ci_travels`
-  MODIFY `travel_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `travel_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_users_documents`
 --
 ALTER TABLE `ci_users_documents`
-  MODIFY `document_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `document_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_visitors`
 --
 ALTER TABLE `ci_visitors`
-  MODIFY `visitor_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `visitor_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ci_warnings`
 --
 ALTER TABLE `ci_warnings`
-  MODIFY `warning_id` int(111) NOT NULL AUTO_INCREMENT;
+  MODIFY `warning_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

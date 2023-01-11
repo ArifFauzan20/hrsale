@@ -238,7 +238,7 @@ class Sergeant extends BaseController {
 						'required' => lang('Main.xin_error_field_text')
 					]
 				],
-				'designation_name' => [
+				'designation' => [
 					'rules'  => 'required',
 					'errors' => [
 						'required' => lang('Main.xin_error_field_text')
@@ -254,7 +254,7 @@ class Sergeant extends BaseController {
 			if(!$this->validate($rules)){
 				$ruleErrors = [
                     "department" => $validation->getError('department'),
-					"designation_name" => $validation->getError('designation_name'),
+					"designation" => $validation->getError('designation'),
 					"sergeant_name" => $validation->getError('sergeant_name')
                 ];
 				foreach($ruleErrors as $err){
@@ -265,13 +265,13 @@ class Sergeant extends BaseController {
 				}
 			} else {
 				$department = $this->request->getPost('department',FILTER_SANITIZE_STRING);
-				$designation_name = $this->request->getPost('designation_name',FILTER_SANITIZE_STRING);
+				$designation = $this->request->getPost('designation',FILTER_SANITIZE_STRING);
 				$sergeant_name = $this->request->getPost('sergeant_name',FILTER_SANITIZE_STRING);
 				$description = $this->request->getPost('description',FILTER_SANITIZE_STRING);
 				$id = udecode($this->request->getPost('token',FILTER_SANITIZE_STRING));
 				$data = [
 					'department_id' => $department,
-					'designation_name'  => $designation_name,
+					'designation_id'  => $designation,
 					'sergeant_name'  => $sergeant_name,
 					'description'  => $description
 				];
@@ -305,7 +305,7 @@ class Sergeant extends BaseController {
 				'field_id' => $id,
 			];
 		if($session->has('sup_username')){
-			return view('erp/designation/dialog_sergeant', $data);
+			return view('erp/sergeant/dialog_sergeant', $data);
 		} else {
 			return redirect()->to(site_url('erp/login'));
 		}
