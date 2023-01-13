@@ -1,6 +1,7 @@
 <?php
 use App\Models\DepartmentModel;
 use App\Models\DesignationModel;
+use App\Models\SergeantModel;
 use App\Models\RolesModel;
 use App\Models\UsersModel;
 use App\Models\ShiftModel;
@@ -9,6 +10,7 @@ use App\Models\SystemModel;
 
 $DepartmentModel = new DepartmentModel();
 $DesignationModel = new DesignationModel();
+$SergeantModel = new SergeantModel();
 $RolesModel = new RolesModel();
 $UsersModel = new UsersModel();
 $ConstantsModel = new ConstantsModel();
@@ -21,12 +23,14 @@ $user_info = $UsersModel->where('user_id', $usession['sup_user_id'])->first();
 if($user_info['user_type'] == 'staff'){
 	$departments = $DepartmentModel->where('company_id',$user_info['company_id'])->orderBy('department_id', 'ASC')->findAll();
 	$designations = $DesignationModel->where('company_id',$user_info['company_id'])->orderBy('designation_id', 'ASC')->findAll();
+	$sergeants = $SergeantModel->where('company_id',$user_info['company_id'])->orderBy('sergeant_id', 'ASC')->findAll();
 	$office_shifts = $ShiftModel->where('company_id',$user_info['company_id'])->orderBy('office_shift_id', 'ASC')->findAll();
 	$leave_types = $ConstantsModel->where('company_id',$user_info['company_id'])->where('type','leave_type')->orderBy('constants_id', 'ASC')->findAll();
 	$roles = $RolesModel->where('company_id',$user_info['company_id'])->orderBy('role_id', 'ASC')->findAll();
 } else {
 	$departments = $DepartmentModel->where('company_id',$usession['sup_user_id'])->orderBy('department_id', 'ASC')->findAll();
 	$designations = $DesignationModel->where('company_id',$usession['sup_user_id'])->orderBy('designation_id', 'ASC')->findAll();
+  $sergeants = $SergeantModel->where('company_id',$user_info['company_id'])->orderBy('sergeant_id', 'ASC')->findAll();
 	$office_shifts = $ShiftModel->where('company_id',$usession['sup_user_id'])->orderBy('office_shift_id', 'ASC')->findAll();
 	$leave_types = $ConstantsModel->where('company_id',$usession['sup_user_id'])->where('type','leave_type')->orderBy('constants_id', 'ASC')->findAll();
 	$roles = $RolesModel->where('company_id',$usession['sup_user_id'])->orderBy('role_id', 'ASC')->findAll();
@@ -222,7 +226,7 @@ $get_animate='';
                   </select>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
                   <label for="department">
                     <?= lang('Dashboard.left_department');?>
@@ -240,7 +244,7 @@ $get_animate='';
                   </select>
                 </div>
               </div>
-              <div class="col-md-6" id="designation_ajax">
+              <div class="col-md-4" id="designation_ajax">
                 <div class="form-group">
                   <label for="designation">
                     <?= lang('Dashboard.left_designation');?>
@@ -249,6 +253,23 @@ $get_animate='';
                   <select class="form-control" disabled="disabled" name="designation_id" data-plugin="select_hrm" data-placeholder="<?= lang('Dashboard.left_designation');?>">
                     <option value="">
                     <?= lang('Dashboard.left_designation');?>
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4" id="sergeant_ajax">
+                <div class="form-group">
+                  <label for="sergeant">
+                    <?= lang('Dashboard.left_sergeant');?>
+                  </label>
+                  <span class="text-danger">*</span>
+                  <select class="form-control" name="sergeant_id" data-plugin="select_hrm" data-placeholder="<?= lang('Dashboard.left_sergeant');?>">
+                    <option value="">
+                    <?php foreach($sergeants as $isergeant):?>
+                    <option value="<?= $isergeant['sergeant_id'];?>">
+                    <?= $isergeant['sergeant_name'];?>
+                    </option>
+                    <?php endforeach;?>
                     </option>
                   </select>
                 </div>

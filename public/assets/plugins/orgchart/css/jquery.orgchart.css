@@ -424,3 +424,25 @@
 .orgchart.l2r .node.slide-left, .orgchart.r2l .node.slide-left {
   transform: translateX(-40px);
 }
+
+.orgchart .assistant-node {
+  display: inline-block;
+  margin: 0;
+  padding: 3px;
+  border: 2px dashed transparent;
+  text-align: center;
+  width: 130px;
+  left: 138px;
+  top: 26px;
+  z-index: 2;
+  position: absolute;
+}
+.orgchart .assistant-node .connector {
+  border-left: rgba(217, 83, 79, 0.8) dashed 2px;
+  border-bottom: rgba(217, 83, 79, 0.8) dashed 2px;
+  position: absolute;
+  left: -70px;
+  width: 72px;
+  height: 8px;
+  top: 14px;
+}

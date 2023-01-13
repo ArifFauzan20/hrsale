@@ -203,7 +203,7 @@ if ( ! function_exists('count_employee_leave'))
 }
 // generate employee id
 if( !function_exists('generate_random_employeeid') ){
-	function generate_random_employeeid($length = 6) {
+	function generate_random_employeeid($length = 8) {
 		$characters = '0123456789';
 		$charactersLength = strlen($characters);
 		$randomString = '';

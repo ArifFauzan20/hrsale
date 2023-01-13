@@ -61,7 +61,7 @@ if($user_info['user_type'] == 'staff'){
         <label for="name">
           <?= lang('Dashboard.left_designation');?>
           <span class="text-danger">*</span> </label>
-        <select class="form-control" data-plugin="select_hrm" data-placeholder="<?= lang('Dashboard.left_designation');?>" name="designaion">
+        <select class="form-control" data-plugin="select_hrm" data-placeholder="<?= lang('Dashboard.left_designation');?>" name="designation">
           <option value=""></option>
           <?php foreach($main_designation as $idesignation) {?>
           <option value="<?= $idesignation['designation_id']?>" <?php if($idesignation['designation_id']==$result['designation_id']):?> selected="selected"<?php endif;?>>

@@ -311,7 +311,9 @@ class Designation extends BaseController {
 				$series_info[] = $dep_count;
 			}
 			
-		}				  
+		}	
+		// dd($DesignationModel);
+		return 	$dep_info;		  
 		$Return['iseries'] = $series_info;
 		$Return['ilabels'] = $title_info;
 		$Return['total_label'] = lang('Main.xin_total');

@@ -154,8 +154,8 @@ $get_animate ='';
             <thead>
               <tr>
                 <th><?= lang('Dashboard.left_sergeant');?></th>
-                <th><?= lang('Dashboard.left_designation');?></th>
                 <th><?= lang('Dashboard.left_department');?></th>
+                <th><?= lang('Dashboard.left_designation');?></th>
               </tr>
             </thead>
           </table>

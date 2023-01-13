@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 11, 2023 at 02:22 AM
+-- Generation Time: Jan 13, 2023 at 09:06 AM
 -- Server version: 8.0.30
 -- PHP Version: 7.4.33
 
@@ -633,8 +633,7 @@ CREATE TABLE `ci_departments` (
 --
 
 INSERT INTO `ci_departments` (`department_id`, `department_name`, `company_id`, `department_head`, `added_by`, `created_at`) VALUES
-(16, 'Liutenant	', 2, 21, 2, '05-01-2023 01:26:44'),
-(19, 'IT', 2, 25, 2, '05-01-2023 03:58:05');
+(16, 'Liutenant', 2, 21, 2, '05-01-2023 01:26:44');
 
 -- --------------------------------------------------------
 
@@ -658,7 +657,7 @@ CREATE TABLE `ci_designations` (
 INSERT INTO `ci_designations` (`designation_id`, `department_id`, `company_id`, `designation_name`, `description`, `created_at`) VALUES
 (15, 16, 2, 'Sergeant', '', '05-01-2023 01:43:30'),
 (16, 16, 2, 'Staff Sergent', '', '05-01-2023 04:33:11'),
-(17, 20, 2, 'ds1', '', '10-01-2023 08:33:08');
+(17, 19, 2, 'ds1', '', '10-01-2023 08:33:08');
 
 -- --------------------------------------------------------
 
@@ -1011,11 +1010,10 @@ CREATE TABLE `ci_erp_users` (
 --
 
 INSERT INTO `ci_erp_users` (`user_id`, `user_role_id`, `user_type`, `company_id`, `first_name`, `last_name`, `email`, `username`, `password`, `company_name`, `trading_name`, `registration_no`, `government_tax`, `company_type_id`, `profile_photo`, `contact_number`, `gender`, `address_1`, `address_2`, `city`, `state`, `zipcode`, `country`, `last_login_date`, `last_logout_date`, `last_login_ip`, `is_logged_in`, `is_active`, `created_at`) VALUES
-(2, 0, 'company', 2, 'Aileen', 'SMP', 'aileen@gmail.com', 'aileen', '$2y$12$5h9DaBUNerkZ04Yl4G8lAOQGlX1AWtOeCvHy8ar31zidMkULWrspu', 'PT SINAR METRINDO PERKASA', 'TRD-9853142', 'RG-153974520', 'TX-74521583', 3, 'a-sm.jpg', '081245422', '1', 'jl taman aries', 'MD 20815', 'jakarta barat', 'DKI JAKARTA', '20834', 101, '10-01-2023 19:03:40', '04-01-2023 23:24:44', '::1', 1, 1, '15-05-2021 08:11:26'),
+(2, 0, 'company', 2, 'Aileen', 'SMP', 'aileen@gmail.com', 'aileen', '$2y$12$5h9DaBUNerkZ04Yl4G8lAOQGlX1AWtOeCvHy8ar31zidMkULWrspu', 'PT SINAR METRINDO PERKASA', 'TRD-9853142', 'RG-153974520', 'TX-74521583', 3, 'a-sm.jpg', '081245422', '1', 'jl taman aries', 'MD 20815', 'jakarta barat', 'DKI JAKARTA', '20834', 101, '12-01-2023 18:56:44', '11-01-2023 20:13:18', '::1', 1, 1, '15-05-2021 08:11:26'),
 (21, 2, 'staff', 2, 'Rikardo', 'Rahmat', 'rikardo@gmail.com', 'rikardo', '$2y$12$Peb3dKZsGxBtr0zA0fKLgexd8eTu85U4LStofpxOdlPxkuOqCnCqm', 'PT SINAR METRINDO PERKASA', '', '', '', 0, '1.png', '0812365988', '1', '', '', '', '', '', 0, '0', '0', '0', 0, 1, '05-01-2023 01:52:43'),
 (23, 7, 'staff', 2, 'David', 'Condro', 'david@mail.com', 'david123', '$2y$12$ngHLX1MZvDUMV3EtmRyj.eCmq.Z5LcqEkoVS4mOjntlLEFUalIIE6', 'PT SINAR METRINDO PERKASA', '', '', '', 0, '2.png', '081256555', '1', '', '', '', '', '', 0, '0', '0', '0', 0, 1, '05-01-2023 04:37:13'),
 (24, 8, 'staff', 2, 'Radit', 'epa', 'radit@mail.com', 'radit123', '$2y$12$nX/kWdBOzkMA/eO1m.C/uem6csqL8TVXA5qRtA/qX76NNw.KfUGVC', 'PT SINAR METRINDO PERKASA', '', '', '', 0, '1.png', '084557855', '1', '', '', '', '', '', 0, '0', '0', '0', 0, 1, '05-01-2023 04:38:40'),
-(25, 6, 'staff', 2, 'letnan', '2', 'letnan@mail.com', 'letnan123', '$2y$12$GHC4y8c/XzKFRJdeR65bVunBC3VCAkzt33c8R1lKnRuujia6v4IoC', 'PT SINAR METRINDO PERKASA', '', '', '', 0, 'bugs spl.PNG', '081254555', '1', '', '', '', '', '', 0, '0', '0', '0', 0, 1, '10-01-2023 02:22:58'),
 (28, 6, 'staff', 2, 'jaka', '123', 'jaka@mail.com', 'jaka123', '$2y$12$3T6M1.IviKLw4LPs1TFx8.thlXmhB76HYdKD.g3xQvkHhZb8WIDU.', 'PT SINAR METRINDO PERKASA', '', '', '', 0, 't.jpg', '0812456885', '2', '', '', '', '', '', 0, '0', '0', '0', 0, 1, '10-01-2023 09:01:23');
 
 -- --------------------------------------------------------
@@ -1030,7 +1028,7 @@ CREATE TABLE `ci_erp_users_details` (
   `employee_id` varchar(255) NOT NULL,
   `department_id` int NOT NULL,
   `designation_id` int NOT NULL,
-  `sergeant_id` int NOT NULL,
+  `sergeant_id` int DEFAULT NULL,
   `office_shift_id` int NOT NULL,
   `basic_salary` decimal(65,2) NOT NULL,
   `hourly_rate` decimal(65,2) NOT NULL,
@@ -1068,10 +1066,9 @@ CREATE TABLE `ci_erp_users_details` (
 --
 
 INSERT INTO `ci_erp_users_details` (`staff_details_id`, `user_id`, `employee_id`, `department_id`, `designation_id`, `sergeant_id`, `office_shift_id`, `basic_salary`, `hourly_rate`, `salay_type`, `leave_categories`, `role_description`, `date_of_joining`, `date_of_leaving`, `date_of_birth`, `marital_status`, `religion_id`, `blood_group`, `citizenship_id`, `bio`, `experience`, `fb_profile`, `twitter_profile`, `gplus_profile`, `linkedin_profile`, `account_title`, `account_number`, `bank_name`, `iban`, `swift_code`, `bank_branch`, `contact_full_name`, `contact_phone_no`, `contact_email`, `contact_address`, `created_at`) VALUES
-(21, 23, '703123', 16, 15, 0, 1, '0.00', '0.00', 1, '0', 'Enter role description here..', '05-01-2023', '', '', 0, 0, '', 0, 'Enter staff bio here..', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '05-01-2023 04:37:13'),
-(22, 24, '813883', 16, 15, 0, 1, '0.00', '0.00', 1, '0', 'Enter role description here..', '05-01-2023', '', '', 0, 0, '', 0, 'Enter staff bio here..', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '05-01-2023 04:38:40'),
-(23, 25, '077775', 16, 15, 0, 1, '0.00', '0.00', 1, '0', 'Enter role description here..', '10-01-2023', '', '', 0, 0, '', 0, 'Enter staff bio here..', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '10-01-2023 02:22:58'),
-(24, 28, '314689', 16, 15, 1, 1, '0.00', '0.00', 1, '0', 'Enter role description here..', '10-01-2023', '', '', 0, 0, '', 0, 'Enter staff bio here..', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '10-01-2023 09:01:23');
+(21, 23, '703123', 16, 15, NULL, 1, '0.00', '0.00', 1, '0', 'Enter role description here..', '05-01-2023', '', '', 0, 0, '', 0, 'Enter staff bio here..', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '05-01-2023 04:37:13'),
+(22, 24, '813883', 16, 16, NULL, 1, '0.00', '0.00', 1, '0', 'Enter role description here..', '05-01-2023', '', '', 0, 0, '', 0, 'Enter staff bio here..', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '05-01-2023 04:38:40'),
+(24, 28, '314689', 16, 16, 1, 1, '0.00', '0.00', 1, '0', 'Enter role description here..', '10-01-2023', '', '', 0, 0, '', 0, 'Enter staff bio here..', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '10-01-2023 09:01:23');
 
 -- --------------------------------------------------------
 
@@ -1965,7 +1962,7 @@ CREATE TABLE `ci_sergeans` (
 --
 
 INSERT INTO `ci_sergeans` (`sergeant_id`, `department_id`, `company_id`, `designation_id`, `sergeant_name`, `description`, `created_at`) VALUES
-(1, 16, 2, 15, 'sergeant 1', NULL, '05-01-2023 04:33:11');
+(1, 16, 2, 15, 'sergeant 2', '', '05-01-2023 04:33:11');
 
 -- --------------------------------------------------------
 
@@ -3347,7 +3344,7 @@ ALTER TABLE `ci_erp_settings`
 -- AUTO_INCREMENT for table `ci_erp_users`
 --
 ALTER TABLE `ci_erp_users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `ci_erp_users_details`
@@ -3617,7 +3614,7 @@ ALTER TABLE `ci_resignations`
 -- AUTO_INCREMENT for table `ci_sergeans`
 --
 ALTER TABLE `ci_sergeans`
-  MODIFY `sergeant_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sergeant_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ci_staff_roles`

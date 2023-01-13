@@ -5,7 +5,7 @@ use CodeIgniter\Model;
 
 class SergeantModel extends Model {
  
-    protected $table = 'ci_sergeant';
+    protected $table = 'ci_sergeans';
 
     protected $primaryKey = 'sergeant_id';
     

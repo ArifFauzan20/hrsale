@@ -27,6 +27,7 @@ use App\Models\UsersModel;
 use App\Models\MainModel;
 use App\Models\DepartmentModel;
 use App\Models\DesignationModel;
+use App\Models\SergeantModel;
 use App\Models\ConstantsModel;
 use App\Models\CountryModel;
 use App\Models\StaffdetailsModel;
@@ -691,6 +692,7 @@ class Employees extends BaseController {
 			$office_shift_id = $this->request->getPost('office_shift_id',FILTER_SANITIZE_STRING);
 			$department_id = $this->request->getPost('department_id',FILTER_SANITIZE_STRING);
 			$designation_id = $this->request->getPost('designation_id',FILTER_SANITIZE_STRING);
+			$sergeant_id = $this->request->getPost('sergeant_id',FILTER_SANITIZE_STRING);
 			$basic_salary = $this->request->getPost('basic_salary',FILTER_SANITIZE_STRING);
 			$hourly_rate = $this->request->getPost('hourly_rate',FILTER_SANITIZE_STRING);
 			$salay_type = $this->request->getPost('salay_type',FILTER_SANITIZE_STRING);
@@ -739,6 +741,7 @@ class Employees extends BaseController {
 				'employee_id'  => $employee_id,
 				'department_id'  => $department_id,
 				'designation_id'  => $designation_id,
+				'sergeant_id'  => $sergeant_id,
 				'office_shift_id' => $office_shift_id,
 				'date_of_joining' => date('d-m-Y'),
 				'date_of_leaving' => '',

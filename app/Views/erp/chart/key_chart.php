@@ -35,7 +35,35 @@ $get_animate = '';
 			
 			<?php $iuser_count = $UsersModel->where('user_id', $sdesign['user_id'])->countAllResults(); ?>
 			<?php if($iuser_count > 0){?>
-            <?php $iuser = $UsersModel->where('user_id', $sdesign['user_id'])->first(); ?>
+            <?php $iuser = $User
+        <?php foreach ($main_department as $idepartment) { ?>
+          <?php $idep_head = $UsersModel->where('user_id', $idepartment['department_head'])->first(); ?> {
+            'profile': '<?= base_url(); ?>/public/uploads/users/thumb/<?= $idep_head['profile_photo']; ?>',
+            'name': '<?= $idep_head['first_name'] . ' ' . $idep_head['last_name']; ?>',
+            'title': '<?= $idepartment['department_name']; ?>',
+            <?php $subdesign = $DesignationModel->where('department_id', $idepartment['department_id'])->first(); ?>
+            <?php $idesignation = $StaffdetailsModel->where('designation_id', $subdesign['designation_id'])->findAll(); ?> 'children': [
+              <?php foreach ($idesignation as $sdesign) { ?>
+                <?php $edesignation = $DesignationModel->where('designation_id', $sdesign['designation_id'])->first(); ?>
+                <?php $iuser_count = $UsersModel->where('user_id', $sdesign['user_id'])->countAllResults(); ?>
+                <?php if ($iuser_count > 0) { ?>
+                  <?php $iuser = $UsersModel->where('user_id', $sdesign['user_id'])->first(); ?> {
+                    'profile': '<?= base_url(); ?>/public/uploads/users/thumb/<?= $iuser['profile_photo']; ?>',
+                    'name': '<?= $iuser['first_name'] . ' ' . $iuser['last_name']; ?>',
+                    'title': '<?= $edesignation['designation_name']; ?>'
+                  },
+                <?php } ?>
+              <?php } ?>
+
+              'children': [
+
+                'name': 'test',
+                'title': 'test',
+              ]
+            ]
+
+          },
+        <?php } ?>sModel->where('user_id', $sdesign['user_id'])->first(); ?>
             <?= $iuser['first_name'].' '.$iuser['last_name'].$idepartment['department_id'].'__'.$sdesign['designation_id'];?>', 'title': '<?= $sdesign['designation_name'];?><br>
             <?php } ?>
 			<?php }?>
@@ -43,9 +71,9 @@ $get_animate = '';
 <div class="row">
     <div class="col-sm-12 col-md-12">
         <div class="card text-left">
-            <div class="card-body">
+            <div class="card-body" style="height: 100%;">
                 <h5 class="card-title"><?= lang('Dashboard.xin_org_chart_title');?></h5>
-                <div id="chart-container"></div>
+                <div id="chart-container" style="height: 100%;"></div>
             </div>
         </div>
     </div>

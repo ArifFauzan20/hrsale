@@ -250,6 +250,19 @@ $employee_id = generate_random_employeeid();
                   </select>
                 </div>
               </div>
+              <div class="col-md-6" id="sergeant_ajax">
+                <div class="form-group">
+                  <label for="designation">
+                    <?= lang('Dashboard.left_sergeant');?>
+                  </label>
+                  <span class="text-danger">*</span>
+                  <select class="form-control" disabled="disabled" name="sergeant_id" data-plugin="select_hrm" data-placeholder="<?= lang('Dashboard.left_designation');?>">
+                    <option value="">
+                    <?= lang('Dashboard.left_sergeant');?>
+                    </option>
+                  </select>
+                </div>
+              </div>
             </div>
             <div class="row">
               <div class="col-sm-4">
